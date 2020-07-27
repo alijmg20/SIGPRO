@@ -1,7 +1,4 @@
-<?php
 
-include_once 'Plantillas/header_index.inc.php';
-?>
 
 <!DOCTYPE html>
 <html>
@@ -196,6 +193,3 @@ include_once 'Plantillas/header_index.inc.php';
 </html>
 
 
-
-<?php
-include_once 'Plantillas/footer_index.inc.php';

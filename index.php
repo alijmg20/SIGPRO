@@ -1,23 +1,7 @@
+<?php
 
-
-<!DOCTYPE html>
-<html>
-
-<head>
-
-	<meta charset="utf-8">
-	<title>SIGPRO</title>
-	<!--Titulo de pestaña-->
-	<link rel="shortcut icon" type="image/x-icon" href="Vistas/Logo/2.png" />
-	<meta name="description" content="Gestion de proyectos">
-	<meta name="viewport" content="width=divice-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0">
-	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
-	<link rel="stylesheet" href="Vistas/css/bootstrap.css">
-
-</head>
-
-<body>
-
+include_once 'Plantillas/header_index.inc.php';
+?>
 
 <nav class="navbar navbar-dark bg-primary navbar-expand-sm sticky-top">
 	<div class="container">
@@ -186,10 +170,6 @@
 <!--FIN INICIAR SESION-->
 
 
-<script src="Vistas/js/jquery.js"></script>
-	<script src="Vistas/js/bootstrap.min.js"></script>
-</body>
 
-</html>
-
-
+<?php
+include_once 'Plantillas/footer_index.inc.php';

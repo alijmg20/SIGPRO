@@ -22,14 +22,15 @@ if (isset($_POST["registrar"])) {
     $password_registro = $_POST['password_registro'];
     $password_confirmacion = $_POST['password_confirmacion'];
     if (!empty($nombre_completo) && !empty($correo_registro) && !empty($password_registro) && !empty($password_confirmacion)) {
-        $sql = 'SELECT * FROM usuarios WHERE usuarios.correo ='.$correo_registro;
+        $sql = 'SELECT * FROM usuarios WHERE correo =:correo';
         $consulta = $conexion->prepare($sql);
+        $consulta->bindParam('correo',$correo_registro);
        $usuario = $consulta->execute();
 
         if(!filter_var($correo_registro, FILTER_VALIDATE_EMAIL)){
 
             
-        }else if($usuario &&$password_registro === $password_confirmacion) {
+        }else if( $usuario && $password_registro === $password_confirmacion) {
             $sql = 'INSERT INTO  usuarios(nombre_completo,correo,clave) VALUES (:nombre_completo,:correo,:clave)';
 
             $consulta = $conexion->prepare($sql);

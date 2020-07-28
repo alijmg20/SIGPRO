@@ -6,7 +6,7 @@ session_unset();
 
 session_destroy();
 
-header('Location:/SIGPRO');
+header('Location:/SIGPRO/index.php');
 
 
 

@@ -22,7 +22,7 @@
 		<!-- Sidebar -->
 		<div class="bg-primary border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">
-				<a class="navbar-brand" href="">
+				<a class="navbar-brand" href="../index.php">
 		    		<img src="Logo/Recortada.png" width="182" height="57" class="d-inline-block align-top" alt="" loading="lazy">
 		  		</a> 
 		  	</div>

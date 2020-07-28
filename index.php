@@ -1,6 +1,10 @@
 <?php
-
+include_once 'Controlador/conexion.inc.php';
+include_once 'Modelo/agregar_usuario.inc.php';	
 include_once 'Plantillas/header_index.inc.php';
+
+
+
 ?>
 
 <nav class="navbar navbar-dark bg-primary navbar-expand-sm sticky-top">
@@ -98,7 +102,7 @@ include_once 'Plantillas/header_index.inc.php';
 
 					<div class="form-group">
 						<label for="correo_registro">Correo electronico : </label>
-						<input type="email" name=" correo_registro" class="form-control" id="correo_registro" aria-describedby="emailHelp">
+						<input type="email" name=" correo_registro" class="form-control" id="correo_registro" >
 					</div>
 
 					<div class="form-group">
@@ -149,7 +153,7 @@ include_once 'Plantillas/header_index.inc.php';
 					<form>
 						<div class="form-group">
 							<label for="correoelectronico">Correo electronico: </label>
-							<input type="email" name=" correoelectronico" class="form-control" id="correoelectronico" aria-describedby="emailHelp">
+							<input type="email" name=" correo_electronico" class="form-control" id="correo_electronico" aria-describedby="emailHelp">
 						</div>
 
 						<div class="form-group">
@@ -177,3 +181,4 @@ include_once 'Plantillas/header_index.inc.php';
 
 <?php
 include_once 'Plantillas/footer_index.inc.php';
+?>

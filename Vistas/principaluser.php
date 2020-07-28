@@ -1,3 +1,22 @@
+<?php
+
+session_start();
+
+include_once '../Controlador/conexion.inc.php';
+
+	if(isset($_SESSION['id_usuario'])){
+		$consulta = $conexion ->prepare('SELECT * FROM usuarios WHERE id =:id');
+		$consulta->bindParam(':id',$_SESSION['id_usuario']);
+		$consulta->execute();
+		$resultado = $consulta->fetch(PDO::FETCH_ASSOC);
+
+		$usuario = $resultado;
+	}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -56,13 +75,18 @@
 				        		<a class="dropdown-item" href="#">Configuracion de perfil</a>
 				        		<a class="dropdown-item" href="#">Invitaciones</a>
 				        		<div class="dropdown-divider"></div>
-				        		<a class="dropdown-item" href="#">Cerrar sesion</a>
+				        		<a class="dropdown-item" href="../Modelo/salir.inc.php">Cerrar sesion</a>
 				      		</div>
 				    	</li>
 				  	</ul>
 			<!--Cierre linea problema:	</div> -->
 			</nav>
 		<!-- /#page-content-wrapper -->
+
+		<h1>Welcome <?php echo $usuario['nombre_completo'] ?></h1>
+
+
+		
 		</div>
 	</div>
 	<!-- /#wrapper -->

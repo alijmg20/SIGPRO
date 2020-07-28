@@ -22,7 +22,7 @@ if (isset($_POST['registro'])) {
 
 
     if (!empty($nombre_completo) && !empty($correo_registro) && !empty($password_registro) && !empty($password_confirmacion)) {
-        if (buscarRepetidos($correo_registro, $conexion) ) {
+        if (buscarRepetidos($correo_registro, $conexion) ==1 ) {
             $mensaje = 'before_register';
         } else {
             if ($password_confirmacion === $password_registro) {
@@ -52,7 +52,7 @@ function buscarRepetidos($correo, $conexion)
     $sql = "SELECT COUNT(*) FROM usuarios WHERE correo = :correo";
     $consulta = $conexion->prepare($sql);
     $consulta->bindParam(':correo',$correo,PDO::PARAM_STR);
-     $consulta->execute();
+    $consulta->execute();
     $contador = $consulta->fetchColumn();
     if ($n = ($contador > 0)) {
         return $n;

@@ -1,6 +1,7 @@
 <?php
 $mensaje = '';
 include_once 'Controlador/conexion.inc.php';
+include_once 'Modelo/ingresar.inc.php';
 include_once 'Modelo/agregar_usuario.inc.php';
 include_once 'Plantillas/header_index.inc.php';
 
@@ -79,6 +80,21 @@ if ($mensaje === 'successfull') { ?>
 		<div class="alert alert-warning" role="alert">
 			<button class="close" data-dismiss="alert"><span>&times;</span></button>
 			Ya este usuario esta registrado!
+		</div>
+	</div>
+
+	<?php
+	$mensaje = '';
+
+	//Alerta de que el usuario y la contraseña no coinciden
+
+}else if($mensaje === 'wrong_user'){
+?>
+
+<div class="container text-center">
+		<div class="alert alert-danger" role="alert">
+			<button class="close" data-dismiss="alert"><span>&times;</span></button>
+			Datos ingresados invalidos
 		</div>
 	</div>
 
@@ -217,7 +233,7 @@ if ($mensaje === 'successfull') { ?>
 					<form>
 						<div class="form-group">
 							<label for="correoelectronico">Correo electronico: </label>
-							<input type="email" name=" correo_electronico" class="form-control" id="correo_electronico" aria-describedby="emailHelp">
+							<input type="email" name="correo_electronico" class="form-control" id="correo_electronico" aria-describedby="emailHelp">
 						</div>
 
 						<div class="form-group">
@@ -233,7 +249,7 @@ if ($mensaje === 'successfull') { ?>
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<button type="submit" class="btn btn-info">Iniciar sesion</button>
+					<button type="submit" name="iniciarSesion" class="btn btn-info">Iniciar sesion</button>
 				</div>
 			</div>
 		</div>

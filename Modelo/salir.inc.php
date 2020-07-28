@@ -6,7 +6,7 @@ session_unset();
 
 session_destroy();
 
-header('Location:/');
+header('Location:/'); //CAMBIAR SI ES EN EL SERVIDOR POR "/"
 
 
 

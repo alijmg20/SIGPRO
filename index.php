@@ -93,13 +93,13 @@ include_once 'Plantillas/header_index.inc.php';
 					</div>
 
 					<div class="form-group">
-						<label for="email">Correo electronico : </label>
-						<input type="email" name=" correoelectronico" class="form-control" id="correoelectronico" aria-describedby="emailHelp">
+						<label for="correo_registro">Correo electronico : </label>
+						<input type="email" name=" correo_registro" class="form-control" id="correo_registro" aria-describedby="emailHelp">
 					</div>
 
 					<div class="form-group">
-						<label for="password">Contraseña : </label>
-						<input type="password" class="form-control" name="password" id="password">
+						<label for="password_registro">Contraseña : </label>
+						<input type="password" class="form-control" name="password_registro" id="password_registro">
 					</div>
 
 					<div class="form-group">
@@ -118,7 +118,7 @@ include_once 'Plantillas/header_index.inc.php';
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<button type="submit" class="btn btn-info">Registar</button>
+					<button type="submit" class="btn btn-info" name="registrar">Registar</button>
 				</div>
 			</div>
 		</div>
@@ -144,7 +144,7 @@ include_once 'Plantillas/header_index.inc.php';
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="email">Correo electronico: </label>
+							<label for="correoelectronico">Correo electronico: </label>
 							<input type="email" name=" correoelectronico" class="form-control" id="correoelectronico" aria-describedby="emailHelp">
 						</div>
 

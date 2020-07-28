@@ -17,7 +17,7 @@ $database ='bf4bgnb9lkplnxugz94i';
 
 //$user = 'root';
 
-$user = 'uunskjudzsrb7i5r;';
+$user = 'uunskjudzsrb7i5r';
 
 /*
     @$password = Contraseña proporcionada por el servidor de Clever Cloud

@@ -14,37 +14,47 @@ include_once 'Controlador/conexion.inc.php';
 
 
 //-------------------------------------------------------------------------------------------------
-
-if (isset($_POST["registrar"])) {
-
+if (isset($_POST['registro'])) {
     $nombre_completo = $_POST['nombre'];
-    $correo_registro = $_POST['correo_registro'];
+    $correo_registro  = $_POST['correo_registro'];
     $password_registro = $_POST['password_registro'];
     $password_confirmacion = $_POST['password_confirmacion'];
+
+
     if (!empty($nombre_completo) && !empty($correo_registro) && !empty($password_registro) && !empty($password_confirmacion)) {
-        $sql = 'SELECT * FROM usuarios WHERE correo =:correo';
-        $consulta = $conexion->prepare($sql);
-        $consulta->bindParam('correo',$correo_registro);
-       $usuario = $consulta->execute();
+        if (buscarRepetidos($correo_registro, $conexion) === 1) {
+            $mensaje = 'before_register';
+        } else {
+            if ($password_confirmacion === $password_registro) {
 
-        if(!filter_var($correo_registro, FILTER_VALIDATE_EMAIL)){
+                $sql = 'INSERT INTO usuarios(nombre_completo,correo,clave) VALUES (:nombre_completo,:correo,:clave)';
+                $consulta = $conexion->prepare($sql);
+                $password_cifrado = password_hash($password_registro, PASSWORD_BCRYPT);
 
-            
-        }else if( $usuario && $password_registro === $password_confirmacion) {
-            $sql = 'INSERT INTO  usuarios(nombre_completo,correo,clave) VALUES (:nombre_completo,:correo,:clave)';
-
-            $consulta = $conexion->prepare($sql);
-            $password_registro_cifrado = md5($password_registro);
-
-            $consulta -> execute(array(
-                ':nombre_completo' => $nombre_completo,
-                ':correo' => $correo_registro,
-                ':clave' => $password_registro_cifrado,
-            ));
-
-
-        }else{
-
+                if ($consulta->execute(array(
+                    ':nombre_completo' => $nombre_completo,
+                    ':correo' => $correo_registro,
+                    ':clave' => $password_cifrado,
+                ))) {
+                    $mensaje = 'successfull';
+                }
+            } else {
+                $mensaje = 'bad_password';
+            }
         }
+    } else {
+        $mensaje = 'date_wrong';
+    }
+}
+
+function buscarRepetidos($correo, $conexion)
+{
+    $sql = "SELECT * FROM usuarios WHERE correo ='$correo'";
+    $consulta = $conexion->prepare($sql);
+    $resultado = array($consulta->execute());
+    if (count($resultado) > 0) {
+        return 1;
+    } else {
+        return 0;
     }
 }

@@ -1,8 +1,8 @@
 <?php
+$mensaje = '';
 include_once 'Controlador/conexion.inc.php';
-include_once 'Modelo/agregar_usuario.inc.php';	
+include_once 'Modelo/agregar_usuario.inc.php';
 include_once 'Plantillas/header_index.inc.php';
-
 
 
 ?>
@@ -21,13 +21,77 @@ include_once 'Plantillas/header_index.inc.php';
 			<div class="d-flex flex-row justify-content-end">
 				<a href="#iniciarsesion" data-toggle="modal" class="btn btn-warning mr-2">Iniciar sesion</a>
 				<a href="#registro" data-toggle="modal" class="btn btn-outline-dark">Registro</a>
+
 			</div>
 		</div>
 	</div>
 </nav>
 
-
 <br />
+
+<?php 
+	//Alerta de que ha sido creado satisfactoriamente el usuario
+
+if ($mensaje === 'successfull') { ?>
+	<div class="container text-center">
+		<div class="alert alert-success" role="alert">
+			<button class="close" data-dismiss="alert"><span>&times;</span></button>
+			Registrado exitosamente
+
+		</div>
+	</div>
+
+<?php
+	$mensaje = '';
+
+	//Alerta de que el usuario ingreso mal la contraseña
+
+}  else if ($mensaje === 'bad_password') {
+?>
+	<div class="container text-center">
+		<div class="alert alert-danger" role="alert">
+			<button class="close" data-dismiss="alert"><span>&times;</span></button>
+			Las contraseñas no coinciden
+		</div>
+	</div>
+<?php
+	$mensaje = '';
+
+		//Alerta de que el usuario no ingreso todos los datos
+}else if($mensaje === 'date_wrong'){
+?>
+	<div class="container text-center">
+		<div class="alert alert-danger" role="alert">
+			<button class="close" data-dismiss="alert"><span>&times;</span></button>
+			No ha ingresado todos los Datos!
+		</div>
+	</div>
+
+<?php
+	$mensaje = '';
+
+	//Alerta de que ya tiene una cuenta registrada
+
+}else if($mensaje === 'before_register'){
+?>
+
+<div class="container text-center">
+		<div class="alert alert-warning" role="alert">
+			<button class="close" data-dismiss="alert"><span>&times;</span></button>
+			Ya este usuario esta registrado!
+		</div>
+	</div>
+
+<?php
+	}
+	$mensaje = '';
+?>
+
+
+
+
+
+
 
 <section>
 	<div class="container">
@@ -97,12 +161,12 @@ include_once 'Plantillas/header_index.inc.php';
 
 					<div class="form-group">
 						<label for="nombre">Nombre completo : </label>
-						<input type="text" class="form-control" name="nombre" id="nombre">
+						<input type="text" class="form-control" name="nombre" id="nombre_completo">
 					</div>
 
 					<div class="form-group">
 						<label for="correo_registro">Correo electronico : </label>
-						<input type="email" name=" correo_registro" class="form-control" id="correo_registro" >
+						<input type="email" name=" correo_registro" class="form-control" id="correo_registro">
 					</div>
 
 					<div class="form-group">
@@ -126,7 +190,7 @@ include_once 'Plantillas/header_index.inc.php';
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<button type="submit" class="btn btn-info" name="registrar">Registar</button>
+					<button type="submit" class="btn btn-info" name="registro">Registar</button>
 				</div>
 			</div>
 		</div>

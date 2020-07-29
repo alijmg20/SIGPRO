@@ -19,6 +19,7 @@ include_once 'Modelo/agregar_usuario.inc.php';
 	<meta name="viewport" content="width=divice-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0">
 	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
 	<link rel="stylesheet" href="Vistas/css/bootstrap.css">
+	<link rel="stylesheet" href="Vistas/css/estilos.css">
 
 </head>
 
@@ -34,8 +35,8 @@ include_once 'Modelo/agregar_usuario.inc.php';
 			<div class="navbar-nav mr-auto">
 			</div>
 			<div class="d-flex flex-row justify-content-end">
-				<a href="#iniciarsesion" data-toggle="modal" class="btn btn-warning mr-2">Iniciar sesion</a>
-				<a href="#registro" data-toggle="modal" class="btn btn-outline-dark">Registro</a>
+				<a href="#iniciarsesion" data-toggle="modal" class="btn btn-primary btn-outline-light text-white mr-2">Iniciar sesion</a>
+				<a href="#registro" data-toggle="modal" class="btn btn-dark text-white">Registro</a>
 
 			</div>
 		</div>
@@ -179,8 +180,8 @@ if ($mensaje === 'successfull') { ?>
 <form method="POST" action="">
 	<div class="modal fade" tabindex="-1" role="dialog" id="registro" aria-hidden="true">
 		<div class="modal-dialog modal-md">
-			<div class="modal-content card text-white bg-primary mb-3">
-				<div class="card-header">
+			<div class="modal-content card mb-3">
+				<div class="card-header bg-primary text-white">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -190,37 +191,32 @@ if ($mensaje === 'successfull') { ?>
 				<div class="modal-body">
 
 					<div class="form-group">
-						<label for="nombre">Nombre completo : </label>
-						<input type="text" class="form-control" name="nombre" id="nombre_completo">
+						<input type="text" class="form-control" name="nombre" id="nombre_completo" placeholder="Nombre completo">
 					</div>
 
 					<div class="form-group">
-						<label for="correo_registro">Correo electronico : </label>
-						<input type="email" name=" correo_registro" class="form-control" id="correo_registro">
+						<input type="email" name=" correo_registro" class="form-control" id="correo_registro" placeholder="Correo electrónico">
 					</div>
 
 					<div class="form-group">
-						<label for="password_registro">Contraseña : </label>
-						<input type="password" class="form-control" name="password_registro" id="password_registro">
+						<input type="password" class="form-control" name="password_registro" id="password_registro" placeholder="Contraseña">
 					</div>
 
 					<div class="form-group">
-						<label for="password_confirmacion">Repita su contraseña : </label>
-						<input type="password" class="form-control" name="password_confirmacion" id="password_confirmacion">
+						<input type="password" class="form-control" name="password_confirmacion" id="password_confirmacion" placeholder="Confirma tu contraseña">
 					</div>
 
 
 					<hr>
-					<a style="color: white;">¿Ya posees una cuenta?</a>
-					<a data-dismiss="modal" class="tooltip-test" title="Tooltip" data-toggle="modal" href="#iniciarsesion" style="color: white;">Iniciar Sesion</a>
+					<a >¿Ya posees una cuenta?</a>
+					<a data-dismiss="modal" class="tooltip-test" title="Tooltip" data-toggle="modal" href="#iniciarsesion">Iniciar Sesion</a>
 
 
 
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<button type="submit" class="btn btn-info" name="registro">Registar</button>
+					<button type="submit" class="btn btn-primary btn-lg btn-block" name="registro">Registar</button>
 				</div>
 			</div>
 		</div>
@@ -235,35 +231,32 @@ if ($mensaje === 'successfull') { ?>
 <form method="POST" action="">
 	<div class="modal fade" tabindex="-1" role="dialog" id="iniciarsesion" aria-hidden="true">
 		<div class="modal-dialog modal-md">
-			<div class="modal-content modal-content card text-white bg-primary mb-3">
-				<div class="card-header">
+			<div class="modal-content modal-content card mb-3">
+				<div class="card-header bg-primary">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h3 class="modal-title text-center">Iniciar Sesion</h3>
+					<h3 class="modal-title text-center text-white">Iniciar Sesion</h3>
 				</div>
 
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="correoelectronico">Correo electronico: </label>
-							<input type="email" name="correo_electronico" class="form-control" id="correo_electronico" aria-describedby="emailHelp">
+							<input type="email" name="correo_electronico" class="form-control" id="correo_electronico" aria-describedby="emailHelp" placeholder="Corre electrónico">
 						</div>
 
 						<div class="form-group">
-							<label for="password">Contraseña: </label>
-							<input type="password" class="form-control" name="password" id="password">
+							<input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
 						</div>
 
 						<hr>
-						<a style="color: white;">¿Todavia no tienes una cuenta?</a>
-						<a data-dismiss="modal" class="tooltip-test" title="Tooltip" data-toggle="modal" href="#registro" style="color: white;">¡Registrate Aqui!</a>
+						<a >¿Todavia no tienes una cuenta?</a>
+						<a data-dismiss="modal" class="tooltip-test" title="Tooltip" data-toggle="modal" href="#registro">¡Registrate Aqui!</a>
 					</form>
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<button type="submit" name="iniciarSesion" class="btn btn-info">Iniciar sesion</button>
+					<button type="submit" name="iniciarSesion" class="btn btn-primary btn-lg btn-block">Iniciar sesion</button>
 				</div>
 			</div>
 		</div>

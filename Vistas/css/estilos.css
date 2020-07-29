@@ -1,0 +1,13 @@
+body{
+
+}
+
+.btn-primary:hover{
+	background-color: #0f81c7;
+	border-color: #0f81c7;
+}
+
+.form-control {
+	background: rgba(var(--b3f,250,250,250),1);
+	border-color: #0f81c7;
+}

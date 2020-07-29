@@ -40,8 +40,8 @@ include_once '../Controlador/conexion.inc.php';
 		<!-- Sidebar -->
 		<div class="bg-primary border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">
-				<a class="navbar-brand" href="intex.html">
-		    		<img src="logo/logo.png" width="180" height="60" class="d-inline-block align-top" alt="" loading="lazy">
+				<a class="navbar-brand" href="../Modelo/salir.inc.php">
+		    			<img src="logo/logo.png" width="180" height="60" class="d-inline-block align-top" alt="" loading="lazy">
 		  		</a> 
 		  	</div>
 			<div class="list-group list-group-flush">

@@ -25,9 +25,7 @@ include_once 'Modelo/agregar_usuario.inc.php';
 
 <nav class="navbar navbar-dark bg-primary navbar-expand-sm sticky-top">
 	<div class="container">
-		<a class="navbar-brand" href="index.php">
-			<img src="Vistas/Logo/Recortada.png" width="182" height="57" class="d-inline-block align-top" alt="" loading="lazy">
-		</a>
+		<img src="Vistas/logo/logo.png" width="180" height="60" class="d-inline-block align-top" alt="" loading="lazy">
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -131,7 +129,7 @@ if ($mensaje === 'successfull') { ?>
 			<div class="col-md-12 col-lg-1"></div>
 			<!--Aux-->
 			<div class="col-md-12 col-lg-5 d-flex justify-content-center">
-				<img src="Vistas/Imagenes/eq.png" class="img-fluid rounded border" alt="Equipo">
+				<img src="Vistas/img/equipo.png" class="img-fluid rounded border" alt="Equipo">
 			</div>
 			<div class="col-md-12 col-lg-5">
 				<p class=" text-justify">
@@ -157,7 +155,7 @@ if ($mensaje === 'successfull') { ?>
 				</p>
 			</div>
 			<div class="col-md-12 col-lg-5 d-flex justify-content-center">
-				<img src="Vistas/Imagenes/por.png" class="img-fluid rounded border" alt="Equipo">
+				<img src="Vistas/img/porcentaje.png" class="img-fluid rounded border" alt="Porcentaje">
 			</div>
 			<div class="col-md-12 col-lg-1"></div>
 			<!--Aux-->

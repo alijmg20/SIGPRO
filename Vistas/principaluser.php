@@ -40,9 +40,7 @@ include_once '../Controlador/conexion.inc.php';
 		<!-- Sidebar -->
 		<div class="bg-primary border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">
-				<a class="navbar-brand" href="#">
-		    			<img src="logo/logo.png" width="180" height="60" class="d-inline-block align-top" alt="" loading="lazy">
-		  		</a> 
+		    		<img src="logo/logo.png" width="180" height="60" class="d-inline-block align-top" alt="" loading="lazy">
 		  	</div>
 			<div class="list-group list-group-flush">
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px"> 

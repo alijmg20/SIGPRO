@@ -83,6 +83,8 @@ include_once '../Controlador/conexion.inc.php';
 			</nav>
 		<!-- /#page-content-wrapper -->
 
+		<!--mensaje de que funciona la variable usuario-->
+
 		<h1>Welcome <?php echo $usuario['nombre_completo'] ?></h1>
 
 

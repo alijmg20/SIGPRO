@@ -10,6 +10,7 @@ include_once 'Modelo/agregar_usuario.inc.php';
 <html>
 
 <head>
+
 	<meta charset="utf-8">
 	<title>SIGPRO</title>
 	<!--Titulo de pestaña-->

@@ -62,7 +62,7 @@ if (isset($_SESSION['id_usuario'])) {
 					<img src="img/iconos/conf.png" width="40" style="padding-right: 10px"> Configuracion</a>
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/info.png" width="40" style="padding-right: 10px"> Informacion</a>
-				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
+				<a href="userwindow.php" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/back.png" width="40" style="padding-right: 10px"> Ir a proyectos</a>
 			</div>
 		</div>
@@ -123,7 +123,7 @@ if (isset($_SESSION['id_usuario'])) {
 									<img src="img/iconos/infoblack.png" width="30" style="padding-right: 10px"> Informacion</a>
 							</div>
 							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
-								<a class="text-secondary" href="userwindow.php">
+								<a class="text-secondary" href="#">
 									<img src="img/iconos/backblack.png" width="30" style="padding-right: 10px"> Ir a proyectos</a>
 							</div>
 						</li>
@@ -132,7 +132,9 @@ if (isset($_SESSION['id_usuario'])) {
 			</nav>
 			<!-- /#page-content-wrapper -->
 
+			<!--mensaje de que funciona la variable usuario PARA DEBUGIN-->
 
+			<h1>Welcome <?php echo $usuario['nombre_completo'] ?></h1>
 
 
 

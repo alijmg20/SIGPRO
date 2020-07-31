@@ -48,3 +48,16 @@
     margin-left: -15rem;
   }
 }
+
+.cajanueva {
+  width: 150px;
+  height: 180px;
+  background: #434343;
+  color: #fff;
+  font-size: 15px;
+}
+
+.barrabusqueda { 
+  width: 98%;
+  border-radius: 5px;
+}

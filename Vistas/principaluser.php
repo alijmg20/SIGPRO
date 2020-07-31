@@ -37,8 +37,10 @@ if (isset($_SESSION['id_usuario'])) {
 	<meta name="viewport" content="width=divice-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0">
 	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
 	<link rel="stylesheet" href="css/bootstrap.css">
-
+	<link rel="stylesheet" href="css/estilos.css">
 	<link href="css/simple-sidebar.css" rel="stylesheet">
+	<!--DatePicker-->	
+	<link rel="stylesheet" href="bootstrap-datepicker/css/bootstrap-datepicker.min.css">
 
 </head>
 
@@ -58,7 +60,7 @@ if (isset($_SESSION['id_usuario'])) {
 					<img src="img/iconos/alarm.png" width="40" style="padding-right: 10px"> Alertas</a>
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/client.png" width="40" style="padding-right: 10px"> Cliente</a>
-				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
+				<a href="#configuracion" class="list-group-item list-group-item-action bg-primary text-white" data-toggle="modal" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/conf.png" width="40" style="padding-right: 10px"> Configuracion</a>
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/info.png" width="40" style="padding-right: 10px"> Informacion</a>
@@ -131,6 +133,128 @@ if (isset($_SESSION['id_usuario'])) {
 				</div>
 			</nav>
 			<!-- /#page-content-wrapper -->
+			
+		<!--CONFIGURACION-->
+		<form method="POST" action="">
+			<div class="modal fade" tabindex="-1" role="dialog" id="configuracion" aria-hidden="true">
+				<div class="modal-dialog modal-md">
+					<div class="modal-content modal-content card mb-3">
+						<div class="card-header bg-primary">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h5 class="modal-title text-center text-white">Configuracion</h5>
+						</div>
+
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-6">
+											<h6 class="pt-2">Nombre del proyecto:</h6>
+										</div>
+										<div class="col-6">
+											<input type="text" name="nombre_proyecto" class="form-control" placeholder="Proyecto">
+										</div>
+									</div>									
+								</div>
+								<!--DATEPICKER-->
+								<div class="form-group">
+									<div class="row">
+										<div class="col-6">
+											<h6 class="pt-2">Fecha de fin:</h6>
+										</div>
+										<div class="col-6">
+											<input type="text" name="fecha_de_fin" class="form-control datepicker" placeholder="dd/mm/yyyy">
+										</div>
+									</div>									
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-6">
+											<h6 class="pt-2">Participantes:</h6>
+										</div>
+										<div class="col-6">
+											<button type="button" class="btn btn-primary btn-lg btn-block" name="añadir_participante" data-toggle="modal" data-target="#añadir_participante">Añadir participantes</button>
+										</div>
+									</div>									
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-6">
+											<h6 class="pt-2">Comentario:</h6>
+										</div>
+										<div class="col-6">
+											<input type="text" name="comentario" class="form-control"  placeholder="Comentario">
+										</div>
+									</div>									
+								</div>
+							</form>
+						</div>
+
+						<div class="modal-footer justify-content-center">
+							<button type="button" class="btn btn-primary px-5" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!--AÑADIR PARTICIPANTE-->
+		<form method="POST" action="">
+			<div class="modal fade" tabindex="-1" role="dialog" id="añadir_participante" aria-hidden="true">
+				<div class="modal-dialog modal-md">
+					<div class="modal-content modal-content card mb-3">
+						<div class="card-header bg-primary">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h5 class="modal-title text-center text-white">Añadir participante</h5>
+						</div>
+						
+						<div class="modal-body">
+							<form>
+								<!--AGREGAR CONTACTOS-->
+								<ul class="nav nav-pills" style="height: 250px; overflow-y: scroll;">
+								  	<li class="nav-item">
+								    	<a class="nav-link btn-lg btn-block" href="#" >
+								    		<div class="d-flex flex-row">
+								    			<div class="p-2 bd-highlight col-10 " id="truncar-texto">
+								    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/user.png" width="18"></button> Contacto 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
+								    			</div>
+								    			<div class="p-2 bd-highlight justify-content-end col-2">
+								    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/40.png" width="18"></i></button>
+								    			</div>
+								    		</div>
+								    		
+								    	</a>
+								    	
+								  	</li>
+								</ul>
+
+								<div class="form-group">
+									<div class="row pt-3">
+										<div class="col-10">
+											<input class="form-control" placeholder="Introducir correo electronico">
+										</div>
+										<div class="col-2">
+											<button type="button" class="btn btn-primary btn-circle"><img src="img/iconos/40.png" width="32"></i></button>	
+										</div>
+									</div>									
+								</div>
+							</form>
+						</div>
+
+						<div class="modal-footer justify-content-center">
+							<button type="button" class="btn btn-primary px-5" data-dismiss="modal">Aceptar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+			
+		<!--FIN AÑADIR PARTICIPANTE-->
+
+		<!--FIN CONFIGURACION-->
 
 			<!--mensaje de que funciona la variable usuario PARA DEBUGIN-->
 
@@ -144,6 +268,8 @@ if (isset($_SESSION['id_usuario'])) {
 
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+		<script src="js/app.js"></script>
 </body>
 
 </html>

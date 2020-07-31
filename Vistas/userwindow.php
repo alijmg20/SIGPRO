@@ -105,7 +105,7 @@ if (isset($_SESSION['id_usuario'])) {
 
 					<!--mensaje de que funciona la variable usuario PARA DEBUGIN-->
 
-			<h1>Welcome <?php echo $usuario['nombre_completo'] ?></h1>
+			<!--<h1>Welcome <?php echo $usuario['nombre_completo'] ?></h1>-->
 
 
 

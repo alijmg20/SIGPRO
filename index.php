@@ -250,7 +250,8 @@ if ($mensaje === 'successfull') { ?>
 						</div>
 
 						<hr>
-						<a >¿Todavia no tienes una cuenta?</a>
+						<a data-dismiss="modal" class="tooltip-test" title="Tooltip" data-toggle="modal" href="#recuperar_contraseña">¿Has olvidado la contraseña?</a>
+						<a ><br><br>¿Todavia no tienes una cuenta?</a>
 						<a data-dismiss="modal" class="tooltip-test" title="Tooltip" data-toggle="modal" href="#registro">¡Registrate Aqui!</a>
 					</form>
 				</div>
@@ -264,8 +265,43 @@ if ($mensaje === 'successfull') { ?>
 </form>
 <!--FIN INICIAR SESION-->
 
+<!--RECUPERAR CONTRASEÑA-->
+<form method="POST" action="">
+	<div class="modal fade" tabindex="-1" role="dialog" id="recuperar_contraseña" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content modal-content card mb-3">
+				<div class="card-header bg-primary">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h3 class="modal-title text-center text-white">Recuperar Contraseña</h3>
+				</div>
 
-<script src="Vistas/js/jquery.js"></script>
+				<div class="modal-body text-center">
+					<form>
+						<div class="form-group">
+							<h6 class="pb-3">Introduce tu dirección de correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta.</h6>
+							<input type="email" name="correo_electronico" class="form-control" id="correo_electronico" aria-describedby="emailHelp" placeholder="Corre electrónico">
+						</div>
+						<hr>
+						<a data-dismiss="modal" class="tooltip-test" title="Tooltip" data-toggle="modal" href="#iniciarsesion">Volver al incio de sesión</a>
+						<a ><br><br>¿Todavia no tienes una cuenta?</a>
+						<a data-dismiss="modal" class="tooltip-test" title="Tooltip" data-toggle="modal" href="#registro">¡Registrate Aqui!</a>
+					</form>
+				</div>
+
+				<div class="modal-footer">
+					<button type="submit" name="enviarCorreo" class="btn btn-primary btn-lg btn-block">Enviar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<!--RECUPERAR CONTRASEÑA-->
+
+
+	<script src="Vistas/js/jquery.js"></script>
 	<script src="Vistas/js/bootstrap.min.js"></script>
 </body>
 

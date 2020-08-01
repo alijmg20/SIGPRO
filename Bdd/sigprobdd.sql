@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-08-2020 a las 06:25:53
+-- Tiempo de generación: 01-08-2020 a las 06:57:26
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.28
 
@@ -33,8 +33,8 @@ CREATE TABLE `actividades` (
   `nombre` varchar(100) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `terminado` int(11) NOT NULL,
-  `fecha_inicio` date NOT NULL DEFAULT current_timestamp(),
-  `fecha_final` date NOT NULL,
+  `fecha_inicio` datetime NOT NULL DEFAULT current_timestamp(),
+  `fecha_final` datetime NOT NULL,
   `id_proyecto` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -76,8 +76,8 @@ CREATE TABLE `items` (
   `nombre` int(11) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `terminado` int(11) NOT NULL,
-  `fecha_inicio` date NOT NULL DEFAULT current_timestamp(),
-  `fecha_final` date NOT NULL,
+  `fecha_inicio` datetime NOT NULL DEFAULT current_timestamp(),
+  `fecha_final` datetime NOT NULL,
   `id_actividades` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -95,8 +95,8 @@ CREATE TABLE `proyecto` (
   `id_usuario` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `terminado` int(11) NOT NULL,
-  `fecha_inicio` date NOT NULL DEFAULT current_timestamp(),
-  `fecha_final` date NOT NULL
+  `fecha_inicio` datetime NOT NULL DEFAULT current_timestamp(),
+  `fecha_final` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

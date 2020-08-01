@@ -165,7 +165,7 @@ if (isset($_SESSION['id_usuario'])) {
 											<h6 class="pt-2">Fecha de fin:</h6>
 										</div>
 										<div class="col-6">
-											<input type="text" name="fecha_de_fin" class="form-control datepicker" placeholder="dd/mm/yyyy">
+											<input type="text" name="fecha_de_fin" class="form-control datepicker" placeholder="yyyy/mm/dd">
 										</div>
 									</div>									
 								</div>

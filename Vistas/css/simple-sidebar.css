@@ -55,6 +55,13 @@
   background: #434343;
   color: #fff;
   font-size: 15px;
+  float: left;
+  margin: 20px 0px 20px 20px;
+}
+
+.cajacajanueva {
+  width: 150px;
+  height: 30px;
 }
 
 .barrabusqueda { 

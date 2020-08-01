@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-07-2020 a las 09:25:18
+-- Tiempo de generación: 01-08-2020 a las 06:25:53
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.28
 
@@ -33,8 +33,8 @@ CREATE TABLE `actividades` (
   `nombre` varchar(100) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `terminado` int(11) NOT NULL,
-  `fecha_inicio` datetime NOT NULL DEFAULT current_timestamp(),
-  `fecha_final` datetime NOT NULL,
+  `fecha_inicio` date NOT NULL DEFAULT current_timestamp(),
+  `fecha_final` date NOT NULL,
   `id_proyecto` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -48,8 +48,8 @@ CREATE TABLE `actividades` (
 CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
   `mensaje` varchar(255) NOT NULL,
-  `id_relacion_usuario` int(11) NOT NULL,
-  `id_relacion_proyecto` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_proyecto` int(11) NOT NULL,
   `fecha_envio_mensaje` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -76,8 +76,8 @@ CREATE TABLE `items` (
   `nombre` int(11) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `terminado` int(11) NOT NULL,
-  `fecha_inicio` datetime NOT NULL DEFAULT current_timestamp(),
-  `fecha_final` datetime NOT NULL,
+  `fecha_inicio` date NOT NULL DEFAULT current_timestamp(),
+  `fecha_final` date NOT NULL,
   `id_actividades` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -95,8 +95,8 @@ CREATE TABLE `proyecto` (
   `id_usuario` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `terminado` int(11) NOT NULL,
-  `fecha_inicio` datetime NOT NULL DEFAULT current_timestamp(),
-  `fecha_final` datetime NOT NULL
+  `fecha_inicio` date NOT NULL DEFAULT current_timestamp(),
+  `fecha_final` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -137,6 +137,13 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre_completo`, `correo`, `clave`) VALUES
+(69, 'Ali Jose', 'alijmata628@gmail.com', '$2y$10$9aXAgN8uhuZEtiqaEQFFYev9llT6DqBrsQ6oZjsDwzPZ3H5hLbTXW');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -153,8 +160,8 @@ ALTER TABLE `actividades`
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_id_relacion_usuario` (`id_relacion_usuario`),
-  ADD KEY `fk_id_relacion_proyecto` (`id_relacion_proyecto`);
+  ADD KEY `fk_id_usuario6` (`id_usuario`),
+  ADD KEY `fk_id_proyecto4` (`id_proyecto`);
 
 --
 -- Indices de la tabla `cliente`
@@ -207,19 +214,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `items`
@@ -231,13 +238,13 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `relacion_usuario_proyecto`
 --
 ALTER TABLE `relacion_usuario_proyecto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `relacion_usuario_usuario`
@@ -249,7 +256,7 @@ ALTER TABLE `relacion_usuario_usuario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- Restricciones para tablas volcadas
@@ -266,8 +273,8 @@ ALTER TABLE `actividades`
 -- Filtros para la tabla `chat`
 --
 ALTER TABLE `chat`
-  ADD CONSTRAINT `fk_id_relacion_proyecto` FOREIGN KEY (`id_relacion_proyecto`) REFERENCES `relacion_usuario_proyecto` (`id_proyecto`),
-  ADD CONSTRAINT `fk_id_relacion_usuario` FOREIGN KEY (`id_relacion_usuario`) REFERENCES `relacion_usuario_proyecto` (`id_usuario`);
+  ADD CONSTRAINT `fk_id_proyecto4` FOREIGN KEY (`id_proyecto`) REFERENCES `proyecto` (`id`),
+  ADD CONSTRAINT `fk_id_usuario6` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `items`

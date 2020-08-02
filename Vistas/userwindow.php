@@ -232,6 +232,11 @@
 						<form>
 							<!--Formulario y boton de envio-->
 							<div class="form-group">
+								<label for="exampleInputname">Nombre del cliente</label>
+								<div class="form-group row">
+									<div class="col-1"></div>
+									<input for="enviar" type="email" class="col-9 border border-primary" id="exampleInputname" aria-describedby="emailHelp">
+								</div>
 								<label for="exampleInputEmail1">Correo del cliente</label>
 								<div class="form-group row d-flex justify-content-center">
 									<div class="col-1"></div>

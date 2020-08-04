@@ -46,6 +46,7 @@ if (isset($_SESSION['id_usuario'])) {
 
 <body>
 
+	<!--Wrapper-->
 	<div class="d-flex" id="wrapper">
 
 		<!-- Sidebar -->
@@ -132,10 +133,13 @@ if (isset($_SESSION['id_usuario'])) {
 					</ul>
 				</div>
 			</nav>
-			<!-- /#page-content-wrapper -->
-			
+			<!-- /#page-content-wrapper -->		
 
-
+			<!--Main Content-->	
+			<!--Main content END-->
+		</div>
+	</div>
+	<!-- /#wrapper -->
 
 
 <!--.....................................................CONFIGURACION............................................................-->
@@ -254,26 +258,18 @@ if (isset($_SESSION['id_usuario'])) {
 					</div>
 				</div>
 			</div>
-		</form>
-			
-<!--.......................................................FIN AÑADIR PARTICIPANTE............................................................-->
-
-		<!--FIN CONFIGURACION-->
+		</form>	
+		<!--FIN AÑADIR PARTICIPANTE-->
+<!--...............................................................FIN CONFIGURACION..................................................................-->
 
 			<!--mensaje de que funciona la variable usuario PARA DEBUGIN-->
 
 			<!--<h1>Welcome <?php echo $usuario['nombre_completo'] ?></h1>-->
 
-
-
-		</div>
-		<!-- /#wrapper -->
-
-
-		<script src="js/jquery.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/bootstrap-datepicker.min.js"></script>
-		<script src="js/datepick.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datepicker.min.js"></script>
+	<script src="js/datepick.js"></script>
 </body>
 
 </html>

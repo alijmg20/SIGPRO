@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-08-2020 a las 06:57:26
+-- Tiempo de generación: 04-08-2020 a las 01:56:23
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.28
 
@@ -65,6 +65,20 @@ CREATE TABLE `cliente` (
   `email` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `nombre_completo`, `email`) VALUES
+(1, 'ali', 'ali@mail.com'),
+(2, 'miguel', 'miguel@mail.com'),
+(3, 'dssd', 'sdks@mail.com'),
+(4, 'armando', 'armando@mail.com'),
+(5, 'julian', 'julian@mail.com'),
+(6, 'josemedina', 'josemedina@mail.com'),
+(7, 'ygutgy', 'jndsdkv@dkjskvnskd.com'),
+(8, 'Juan perozo', 'juanperozo@mail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -123,6 +137,15 @@ CREATE TABLE `relacion_usuario_usuario` (
   `id_contacto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `relacion_usuario_usuario`
+--
+
+INSERT INTO `relacion_usuario_usuario` (`id`, `id_usuario`, `id_contacto`) VALUES
+(1, 69, 70),
+(2, 70, 71),
+(3, 69, 71);
+
 -- --------------------------------------------------------
 
 --
@@ -141,7 +164,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre_completo`, `correo`, `clave`) VALUES
-(69, 'Ali Jose', 'alijmata628@gmail.com', '$2y$10$9aXAgN8uhuZEtiqaEQFFYev9llT6DqBrsQ6oZjsDwzPZ3H5hLbTXW');
+(69, 'Ali Jose', 'alijmata628@gmail.com', '$2y$10$9aXAgN8uhuZEtiqaEQFFYev9llT6DqBrsQ6oZjsDwzPZ3H5hLbTXW'),
+(70, 'Miguel Lugo', 'miguel@mail.com', '$2y$10$uyG8l0FBVilLXR1rGKZGm.q.YNr.sF9MyMWov025vkvU0k4b2zU9y'),
+(71, 'Angelymar', 'angelymar@mail.com', '$2y$10$GQM8a83CW3SXeml7owcu1uotX2LPiBXlc.7jkeBs.4I.R8iLnbzKG'),
+(72, 'Zenaimar Grimont', 'zeni@mail.com', '$2y$10$D39k24AWAj3Oo9UkpaEzaux3BqUiGYMiNJt43sJPvQ7xi6FTOHXOi');
 
 --
 -- Índices para tablas volcadas
@@ -198,7 +224,8 @@ ALTER TABLE `relacion_usuario_proyecto`
 --
 ALTER TABLE `relacion_usuario_usuario`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_id_contacto` (`id_contacto`);
+  ADD KEY `fk_id_contacto` (`id_contacto`),
+  ADD KEY `fr_id_usuario_7` (`id_usuario`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -226,7 +253,7 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `items`
@@ -250,13 +277,13 @@ ALTER TABLE `relacion_usuario_proyecto`
 -- AUTO_INCREMENT de la tabla `relacion_usuario_usuario`
 --
 ALTER TABLE `relacion_usuario_usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- Restricciones para tablas volcadas
@@ -301,7 +328,8 @@ ALTER TABLE `relacion_usuario_proyecto`
 -- Filtros para la tabla `relacion_usuario_usuario`
 --
 ALTER TABLE `relacion_usuario_usuario`
-  ADD CONSTRAINT `fk_id_contacto` FOREIGN KEY (`id_contacto`) REFERENCES `usuarios` (`id`);
+  ADD CONSTRAINT `fk_id_contacto` FOREIGN KEY (`id_contacto`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `fr_id_usuario_7` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

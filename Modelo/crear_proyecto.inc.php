@@ -6,7 +6,7 @@
 
 // Inclusiones: 
 
-include_once 'Controlador/conexion.inc.php';
+include_once '../Controlador/conexion.inc.php';
 
 /* 
 
@@ -25,39 +25,46 @@ $termino_proyecto   $fechaI_proyecto       $fechaE_proyecto
 */
 
 
-if (isset($_POST['nuevoproyecto'])) {
-    $nombre = $_POST['nombreproyecto'];                    // nombre
-    $descripcion_proyecto = $_POST['descripcion'];         // descripcion
-    $usuario_proyecto = $_SESSION['id_usuario'];           // id de usuario que crea el proyecto(------> variable $_SESSION declarada en ingresar.inc.php)
-    $cliente_proyecto = $_cliente['cliente_id'];           // id del cliente(----> variable $_cliente declarada en agregar_cliente.inc.php)
-   // $termino_proyecto;                                   // indicador si se termino o no 
-    $fechaI_proyecto = strtotime(date("Y-m-d",time()));    // fecha inicio                                 
-    $fechaE_proyecto = strtotime($_POST['inputState']);    // fecha entrega
+if (isset($_POST['registrar'])) {
 
+    $nombre = $_POST['nombre_proyecto'];                    // nombre
+    $descripcion_proyecto = $_POST['descripcion_proyecto'];         // descripcion
+    $usuario_proyecto = $usuario['id'];           // id de usuario que crea el proyecto(------> variable $_SESSION declarada en ingresar.inc.php)
+    $cliente_proyecto = $cliente;           // id del cliente(----> variable $_cliente declarada en agregar_cliente.inc.php)
+    $termino_proyecto = 0;                                   // indicador si se termino o no                              
+    $fecha_final_proyecto = $_POST['fecha_final'];  // fecha entrega
+    list($ano,$mes,$dia) = explode('/',$fecha_final_proyecto);
+    $fecha_definitiva = $ano.'-'.$mes.'-'.$dia.' 00:00:00';
 
-    if (!empty($nombre) && !empty($descripcion_proyecto) && !empty($usuario_proyecto) && !empty($cliente_proyecto)&& !empty($termino_proyecto) && !empty($fechaI_proyecto)&& !empty($fechaE_proyecto)) {
-        if (nombres_Repetidos($nombre, $conexion) ==1 ) { // validacion para no tener proyectos con el mismo nombre
+    if (!empty($nombre) && !empty($descripcion_proyecto) && !empty($usuario_proyecto) && !empty($cliente_proyecto) && !empty($fecha_final_proyecto) ) {
+        /*if (nombres_Repetidos($nombre, $conexion) ==1 ) { // validacion para no tener proyectos con el mismo nombre
             $mensaje = 'Ya existe un proyecto con ese nombre';
-        } else {
-            if ($fechaE_proyecto>$fechaI_proyecto) {
+        } else*/ {
 
 
-                $sql = 'INSERT INTO proyecto(nombre,descripcion,id_usuario,id_cliente,terminado,fecha_inicio,fecha_final) VALUES (:nombre,:descripcion,:id_usuario,:id_cliente,:terminado,:fecha_inicio,:fecha_final)';
-                $consulta = $conexion->prepare($sql);
 
-                if ($consulta->execute(array(
-                    ':nombre' => $nombre,
-                    ':descripcion' => $descripcion_proyecto,
-                    ':id_usuario' => $usuario_proyecto,
-                    ':id_cliente' => $cliente_proyecto,
-                    /* ':terminado' => $f,*/
-                    ':fecha_inicio' => $fechaI_proyecto,
-                    ':fecha_final' => $fechaE_proyecto,))) {
-                    $mensaje = 'successfull';
-                }
-            } else {
-                $mensaje = 'incorrect delivery date';
+            $sql = 'INSERT INTO proyecto (nombre,descripcion,id_usuario,id_cliente,terminado,fecha_inicio,fecha_final) VALUES (:nombre,:descripcion,:id_usuario,:id_cliente,:terminado,CURRENT_TIMESTAMP(),:fecha_final)';
+            $consulta = $conexion->prepare($sql);
+
+            if ($consulta->execute(array(
+                ':nombre' => $nombre,
+                ':descripcion' => $descripcion_proyecto,
+                ':id_usuario' => $usuario_proyecto,
+                ':id_cliente' => $cliente_proyecto,
+                ':terminado' => $termino_proyecto,
+                ':fecha_final' => $fecha_definitiva
+            ))) {
+                $proyecto = $conexion->lastInsertId();
+                $mensaje = 'successfull';
             }
+        }
+        $sql = ' INSERT INTO relacion_usuario_proyecto(id_usuario,id_proyecto) VALUES (:id_usuario,:id_proyecto) ';
+        $consulta = $conexion->prepare($sql);
+        if ($consulta->execute(array(
+            ':id_usuario' => $usuario_proyecto,
+            ':id_proyecto' => $proyecto,
+        ))) {
+            $mensaje = 'successfull';
         }
     } else {
         $mensaje = 'date_wrong';
@@ -65,7 +72,7 @@ if (isset($_POST['nuevoproyecto'])) {
 }
 
 
-//Funcion para buscar nombre de proyectos repetidos 
+/*//Funcion para buscar nombre de proyectos repetidos 
 //----------------------------------------------------------------
 function nombres_Repetidos($nombre, $conexion)
 {
@@ -79,4 +86,4 @@ function nombres_Repetidos($nombre, $conexion)
     } else {
         return 0;
     }
-}
+}*/

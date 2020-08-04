@@ -25,10 +25,18 @@ include_once '../Modelo/mostrarContactos.inc.php';
 
 $mensaje = '';
 $cliente = '';
-
+$proyecto = 0;
 
 
 include_once '../Modelo/agregar_cliente.inc.php';
+
+include_once '../Modelo/crear_proyecto.inc.php';
+
+include_once '../Modelo/agregar_participante.inc.php';
+
+$mensaje = '';
+$cliente = '';
+$proyecto = 0;
 
 ?>
 
@@ -160,12 +168,8 @@ include_once '../Modelo/agregar_cliente.inc.php';
 
 
 			<?php
-
-
-
 			//PRUEBA DE QUE FUNCIONA LA FUNCION DE AGREGAR CLIENTE;
-			//    echo $cliente 
-
+			   echo $proyecto; 
 			?>
 
 
@@ -226,7 +230,7 @@ include_once '../Modelo/agregar_cliente.inc.php';
 						<div class="form-group row">
 							<label for="nombreproyecto" class="col-sm-6 col-form-label">Nombre del proyecto</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control border border-primary" id="nombreproyecto">
+								<input type="text" class="form-control border border-primary" name="nombre_proyecto" id="nombreproyecto">
 							</div>
 						</div>
 						<!--Fin de nombre del proyecto-->
@@ -239,7 +243,7 @@ include_once '../Modelo/agregar_cliente.inc.php';
 										<option selected>AAAA/MM/DD</option>
 										<option>-->
 								<div class="input-group date js-datepicker border border-primary">
-									<input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+									<input type="text" class="form-control" name="fecha_final"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 								</div>
 								<!--</option>
 									</select>-->
@@ -269,7 +273,7 @@ include_once '../Modelo/agregar_cliente.inc.php';
 						<div class="form-group row">
 							<label for="descripcion" class="col-sm-6 col-form-label">Descripcion</label>
 							<div class="col-md-6">
-								<textarea class="form-control border border-primary" id="Descripcion" rows="3"></textarea>
+								<textarea class="form-control border border-primary" name="descripcion_proyecto" id="Descripcion" rows="3"></textarea>
 							</div>
 						</div>
 						<!--Fin de descripcion-->
@@ -364,23 +368,23 @@ include_once '../Modelo/agregar_cliente.inc.php';
 							
 							<!--MISMO CONCEPTO QUE EN LA LINEA 70 Y 71 PARA MOSTRAR LOS CONTACTOS-->
 
-							<select multiple class="form-control" id="exampleFormControlSelect2">
+							<select name="controlParticipantes[]" multiple class="form-control" id="exampleFormControlSelect2"  >
 
 								<?php
 								if (!empty($contactoVistaUsuario)) {
 									foreach ($contactoVistaUsuario as $fila) :
 								?>
-										<option> <?php echo $fila['nombre_completo'] ?> </option>
+										<option value="<?php echo $fila['id'] ?>"> <?php echo $fila['nombre_completo'] ?> </option>
 									<?php endforeach;
 								}
 								if (!empty($ContactoVistaContacto)) {
 									foreach ($ContactoVistaContacto as $fila) :
 									?>
-										<option> <?php echo $fila['nombre_completo'] ?> </option>
+										<option value="<?php echo $fila['id'] ?>"> <?php echo $fila['nombre_completo'] ?> </option>
 								<?php endforeach;
 								} ?>
 							</select>
-							
+
 							<!--MISMO CONCEPTO QUE EN LA LINEA 70 Y 71 PARA MOSTRAR LOS CONTACTOS-->
 
 						</div>

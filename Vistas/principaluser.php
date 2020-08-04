@@ -40,7 +40,7 @@ if (isset($_SESSION['id_usuario'])) {
 	<link rel="stylesheet" href="css/estilos.css">
 	<link href="css/simple-sidebar.css" rel="stylesheet">
 	<!--DatePicker-->	
-	<link rel="stylesheet" href="bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 
 </head>
 
@@ -134,7 +134,11 @@ if (isset($_SESSION['id_usuario'])) {
 			</nav>
 			<!-- /#page-content-wrapper -->
 			
-		<!--CONFIGURACION-->
+
+
+
+
+<!--.....................................................CONFIGURACION............................................................-->
 		<form method="POST" action="">
 			<div class="modal fade" tabindex="-1" role="dialog" id="configuracion" aria-hidden="true">
 				<div class="modal-dialog modal-md">
@@ -164,8 +168,8 @@ if (isset($_SESSION['id_usuario'])) {
 										<div class="col-6">
 											<h6 class="pt-2">Fecha de fin:</h6>
 										</div>
-										<div class="col-6">
-											<input type="text" name="fecha_de_fin" class="form-control datepicker" placeholder="yyyy/mm/dd">
+										<div class="col-6 input-group date js-datepicker">
+											<input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 										</div>
 									</div>									
 								</div>
@@ -252,7 +256,7 @@ if (isset($_SESSION['id_usuario'])) {
 			</div>
 		</form>
 			
-		<!--FIN AÑADIR PARTICIPANTE-->
+<!--.......................................................FIN AÑADIR PARTICIPANTE............................................................-->
 
 		<!--FIN CONFIGURACION-->
 
@@ -268,8 +272,8 @@ if (isset($_SESSION['id_usuario'])) {
 
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-		<script src="js/app.js"></script>
+		<script src="js/bootstrap-datepicker.min.js"></script>
+		<script src="js/datepick.js"></script>
 </body>
 
 </html>

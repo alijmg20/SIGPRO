@@ -169,7 +169,7 @@ $proyecto = 0;
 
 			<?php
 			//PRUEBA DE QUE FUNCIONA LA FUNCION DE AGREGAR CLIENTE;
-			   echo $proyecto; 
+			   //echo $proyecto; 
 			?>
 
 

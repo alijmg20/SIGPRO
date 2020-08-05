@@ -32,14 +32,16 @@ if (isset($_POST['registrar'])) {
     $usuario_proyecto = $usuario['id'];           // id de usuario que crea el proyecto(------> variable $_SESSION declarada en ingresar.inc.php)
     $cliente_proyecto = $cliente;           // id del cliente(----> variable $_cliente declarada en agregar_cliente.inc.php)
     $termino_proyecto = 0;                                   // indicador si se termino o no                              
-    $fecha_final_proyecto = $_POST['fecha_final'];  // fecha entrega
-    list($ano,$mes,$dia) = explode('/',$fecha_final_proyecto);
-    $fecha_definitiva = $ano.'-'.$mes.'-'.$dia.' 00:00:00';
+    if (!empty($_POST['fecha_final'])) {
+        $fecha_final_proyecto = $_POST['fecha_final'];  // fecha entrega
+        list($ano, $mes, $dia) = explode('/', $fecha_final_proyecto);
+        $fecha_definitiva = $ano . '-' . $mes . '-' . $dia . ' 00:00:00';
+    }
 
-    if (!empty($nombre) && !empty($descripcion_proyecto) && !empty($usuario_proyecto) && !empty($cliente_proyecto) && !empty($fecha_final_proyecto) ) {
-        /*if (nombres_Repetidos($nombre, $conexion) ==1 ) { // validacion para no tener proyectos con el mismo nombre
+    if (!empty($nombre) && !empty($descripcion_proyecto) && !empty($usuario_proyecto) && !empty($cliente_proyecto) && !empty($fecha_final_proyecto)) {
+        if (nombres_Repetidos($nombre, $conexion) ==1 ) { // validacion para no tener proyectos con el mismo nombre
             $mensaje = 'Ya existe un proyecto con ese nombre';
-        } else*/ {
+        } else {
 
 
 
@@ -72,7 +74,7 @@ if (isset($_POST['registrar'])) {
 }
 
 
-/*//Funcion para buscar nombre de proyectos repetidos 
+//Funcion para buscar nombre de proyectos repetidos 
 //----------------------------------------------------------------
 function nombres_Repetidos($nombre, $conexion)
 {
@@ -86,4 +88,4 @@ function nombres_Repetidos($nombre, $conexion)
     } else {
         return 0;
     }
-}*/
+}

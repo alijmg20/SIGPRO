@@ -11,13 +11,17 @@ include_once '../Controlador/conexion.inc.php';
 
 // consultar para obtener el id del proyecto segun el nombre del proyecto
 if (isset($_POST["registrar"])) {
+        $contador = 0;
 
-
-        $id_proyecto = $proyecto;  // -----------------> guardar en variable
-        $participantes= $_POST["controlParticipantes"]; 
-
+        $id_proyecto = $proyecto;  // -----------------> guardar en 
+        if(isset($_POST["controlParticipantes"])) {
+                $participantes= $_POST["controlParticipantes"]; 
+                $contador = count($participantes);
+        }
+        
+        
         //Recorremos el array de los particiapantes seleccionados 
-        for ($i = 0; $i < count($participantes); $i++) {
+        for ($i = 0; $i < $contador ; $i++) {
 
                 // extraer id del participante seleccionado y guardarlo en variable, esta id la saco de la tabla usuario y la busco a traves del nombre 
                 // guardar esa variable en la tabla relacion_usuario_proyecto 

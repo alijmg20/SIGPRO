@@ -22,11 +22,11 @@ if (isset($_SESSION['id_usuario'])) {
 
 
 include_once '../Modelo/mostrarContactos.inc.php';
+include_once '../Modelo/mostrarProyectos.inc.php';
 
 $mensaje = '';
 $cliente = '';
 $proyecto = 0;
-
 
 include_once '../Modelo/agregar_cliente.inc.php';
 
@@ -38,7 +38,11 @@ $mensaje = '';
 $cliente = '';
 $proyecto = 0;
 
+
+
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -187,14 +191,22 @@ $proyecto = 0;
 
 
 			<!--Ejemplo de Nuevo Proyecto-->
+			<?php
+				if(!empty($datos_todos_los_proyectos)){
+					foreach ( $datos_todos_los_proyectos as $fila ):
+						$Rand = str_pad(dechex(Rand(0x000000, 0xFFFFFF)), 6, 0, STR_PAD_LEFT); //generador de numeros aleatorios para los colores
+			?>
+
 			<div class="cajanueva">
-				<a class="text-white" href="#">
-					<div style="padding-bottom: 150px; background: #f422db"></div>
+				<a class="text-white" href="principaluser.php?id=<?php echo $fila['id']  ?>">
+					<div style="padding-bottom: 150px; background: #<?php echo $Rand ?>"></div>
 					<p class="d-flex justify-content-center" style="margin: 3px">
-						Proyectito
+						<?php echo $fila['nombre'] ?>
 					</p>
 				</a>
 			</div>
+					<?php endforeach;  } ?>
+
 			<!--Fin de Ejemplo de Nuevo Proyecto-->
 
 			<!-- Main Col END -->

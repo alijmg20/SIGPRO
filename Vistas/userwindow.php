@@ -21,18 +21,23 @@ if (isset($_SESSION['id_usuario'])) {
 }
 
 
-include_once '../Modelo/mostrarContactos.inc.php';
-include_once '../Modelo/mostrarProyectos.inc.php';
+
 
 $mensaje = '';
 $cliente = '';
 $proyecto = 0;
 
+include_once '../Modelo/agregar_contacto.inc.php';
+
 include_once '../Modelo/agregar_cliente.inc.php';
 
 include_once '../Modelo/crear_proyecto.inc.php';
 
-include_once '../Modelo/agregar_participante.inc.php';
+//include_once '../Modelo/agregar_participante.inc.php';
+
+include_once '../Modelo/mostrarContactos.inc.php';
+include_once '../Modelo/mostrarProyectos.inc.php';
+
 
 $mensaje = '';
 $cliente = '';
@@ -88,8 +93,6 @@ $proyecto = 0;
 						<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 							<img src="img/iconos/userwhite.png" width="40" style="padding-right: 10px"><?php echo $fila['nombre_completo'] ?></a>
 					<?php endforeach;
-
-
 				}
 				//CONSULTAR EN mostrarContactos.inc.php
 				// Aqui se muestran todos los contactos en la barra lateral izquierda desde la vista del id_contacto
@@ -173,7 +176,7 @@ $proyecto = 0;
 
 			<?php
 			//PRUEBA DE QUE FUNCIONA LA FUNCION DE AGREGAR CLIENTE;
-			   //echo $proyecto; 
+			//echo $proyecto; 
 			?>
 
 
@@ -192,20 +195,21 @@ $proyecto = 0;
 
 			<!--Ejemplo de Nuevo Proyecto-->
 			<?php
-				if(!empty($datos_todos_los_proyectos)){
-					foreach ( $datos_todos_los_proyectos as $fila ):
-						$Rand = str_pad(dechex(Rand(0x000000, 0xFFFFFF)), 6, 0, STR_PAD_LEFT); //generador de numeros aleatorios para los colores
+			if (!empty($datos_todos_los_proyectos)) {
+				foreach ($datos_todos_los_proyectos as $fila) :
+					$Rand = str_pad(dechex(Rand(0x000000, 0xFFFFFF)), 6, 0, STR_PAD_LEFT); //generador de numeros aleatorios para los colores
 			?>
 
-			<div class="cajanueva">
-				<a class="text-white" href="principaluser.php?id=<?php echo $fila['id']  ?>">
-					<div style="padding-bottom: 150px; background: #<?php echo $Rand ?>"></div>
-					<p class="d-flex justify-content-center" style="margin: 3px">
-						<?php echo $fila['nombre'] ?>
-					</p>
-				</a>
-			</div>
-					<?php endforeach;  } ?>
+					<div class="cajanueva">
+						<a class="text-white" href="principaluser.php?id=<?php echo $fila['id']  ?>">
+							<div style="padding-bottom: 150px; background: #<?php echo $Rand ?>"></div>
+							<p class="d-flex justify-content-center" style="margin: 3px">
+								<?php echo $fila['nombre'] ?>
+							</p>
+						</a>
+					</div>
+			<?php endforeach;
+			} ?>
 
 			<!--Fin de Ejemplo de Nuevo Proyecto-->
 
@@ -377,10 +381,10 @@ $proyecto = 0;
 						<!--Lista de participantes-->
 						<div class="form-group">
 							<label for="exampleFormControlSelect2" class="d-flex justify-content-center">Contactos</label>
-							
+
 							<!--MISMO CONCEPTO QUE EN LA LINEA 70 Y 71 PARA MOSTRAR LOS CONTACTOS-->
 
-							<select name="controlParticipantes[]" multiple class="form-control" id="exampleFormControlSelect2"  >
+							<select name="controlParticipantes[]" multiple class="form-control" id="exampleFormControlSelect2">
 
 								<?php
 								if (!empty($contactoVistaUsuario)) {
@@ -424,7 +428,10 @@ $proyecto = 0;
 			</div>
 		</div>
 		<!--Fin de Agregar Participantes-->
-		
+	</form>
+	<!--FINAL DEL FORMULARIO PRICIPAL-->
+
+	<form action="" method="POST">
 		<!--Agregar Contacto-->
 		<div class="modal fade" id="agregarcontacto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -450,7 +457,7 @@ $proyecto = 0;
 							<label for="exampleInputEmail1">Correo del contacto</label>
 							<div class="form-group row d-flex justify-content-center">
 								<div class="col-1"></div>
-								<input for="enviar" type="email" class="col-8 border border-primary" name="correo_contacto"  aria-describedby="emailHelp">
+								<input for="enviar" type="email" class="col-8 border border-primary" name="correo_contacto" aria-describedby="emailHelp">
 								<div class="col-2 d-flex justify-content-start">
 									<a href="#"><img src="img/iconos/40.png" id="enviar"></a>
 								</div>
@@ -463,16 +470,16 @@ $proyecto = 0;
 					<!--Fin del cuerpo del modal-->
 
 					<div class="modal-footer d-flex justify-content-center">
-						<button data-dismiss="modal" type="button" class="btn btn-primary" data-toggle="modal">Aceptar</button>
+						<button  type="submit" name="boton_agregar_contacto" class="btn btn-primary" >Aceptar</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!--Fin de Agregar Contacto-->
-
-
 	</form>
-	<!--FINAL DEL FORMULARIO PRICIPAL-->
+	<!--Fin de Agregar Contacto-->
+
+
+
 
 	<!-- Modal confirmar -->
 	<div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

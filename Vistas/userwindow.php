@@ -75,7 +75,7 @@ $proyecto = 0;
 			</div>
 			<div class="list-group list-group-flush">
 
-				<a href="#" class="list-group-item list-group-item-action bg-primary text-white font-weight-bolder text-center" style="padding-top: 20px; padding-bottom: 20px"> Contactos <img src="img/iconos/adduser.png" width="35" style="padding-left: 10px;">
+				<a href="#agregarcontacto" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white font-weight-bolder text-center" style="padding-top: 20px; padding-bottom: 20px"> Contactos <img src="img/iconos/adduser.png" width="35" style="padding-left: 10px;">
 				</a>
 				<?php
 
@@ -424,6 +424,51 @@ $proyecto = 0;
 			</div>
 		</div>
 		<!--Fin de Agregar Participantes-->
+		
+		<!--Agregar Contacto-->
+		<div class="modal fade" id="agregarcontacto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<div class="col-1"></div>
+						<div class="col-10 modal-title text-center">
+							<h5 class="modal-title text-white font-weight-bold" id="exampleModalLabel">Agregar Contacto</h5>
+						</div>
+						<div class="col-1">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+
+					<!--Cuerpo del modal-->
+
+					<div class="modal-body">
+
+						<!--Formulario y boton de envio-->
+						<div class="form-group">
+							<label for="exampleInputEmail1">Correo del contacto</label>
+							<div class="form-group row d-flex justify-content-center">
+								<div class="col-1"></div>
+								<input for="enviar" type="email" class="col-8 border border-primary" name="correo_contacto"  aria-describedby="emailHelp">
+								<div class="col-2 d-flex justify-content-start">
+									<a href="#"><img src="img/iconos/40.png" id="enviar"></a>
+								</div>
+							</div>
+						</div>
+						<!--Fin de Formulario y boton de envio-->
+
+
+					</div>
+					<!--Fin del cuerpo del modal-->
+
+					<div class="modal-footer d-flex justify-content-center">
+						<button data-dismiss="modal" type="button" class="btn btn-primary" data-toggle="modal">Aceptar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--Fin de Agregar Contacto-->
 
 
 	</form>

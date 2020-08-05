@@ -42,6 +42,7 @@ if (isset($_SESSION['id_usuario'])) {
 	<!--DatePicker-->	
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 
+
 </head>
 
 <body>
@@ -55,8 +56,8 @@ if (isset($_SESSION['id_usuario'])) {
 				<img src="logo/logo.png" width="180" height="60" class="d-inline-block align-top" alt="" loading="lazy">
 			</div>
 			<div class="list-group list-group-flush">
-				
-				<a href="#chatgeneral" data-toggle="modal" data-target=".bd-example-modal-lg" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
+
+				<a href="#chatgeneral" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/group.png" width="40" style="padding-right: 10px"> Chat</a>
 				
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
@@ -73,7 +74,6 @@ if (isset($_SESSION['id_usuario'])) {
 				
 				<a href="userwindow.php" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/back.png" width="40" style="padding-right: 10px"> Ir a proyectos</a>
-				
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->
@@ -110,10 +110,10 @@ if (isset($_SESSION['id_usuario'])) {
 							</div>
 						</li>
 						<li class="nav flex-column  d-sm-block d-md-none">
-							
+
 							<div style="padding-top: 5px">
 								<div class="d-flex justify-content-center" style="padding-bottom: 10px">
-									<a class="text-secondary" href="#chatgeneral">
+									<a class="text-secondary" href="#chatgeneral" data-toggle="modal">
 										<img src="img/iconos/groupblack.png" width="30" style="padding-right: 10px">Chat</a>
 								</div>
 							</div>
@@ -142,7 +142,7 @@ if (isset($_SESSION['id_usuario'])) {
 								<a class="text-secondary" href="userwindow.php">
 									<img src="img/iconos/backblack.png" width="30" style="padding-right: 10px"> Ir a proyectos</a>
 							</div>
-							
+
 						</li>
 					</ul>
 				</div>
@@ -155,11 +155,19 @@ if (isset($_SESSION['id_usuario'])) {
 			</div>
 
 			<div style="margin: 20px 20px 20px 20px;">
+				<div id="actividadnueva">
+					<a data-toggle="modal" href="#crearitem" class="text-dark">
+						Actividad 0 <span style="color: #252bff;"> (Nuevo) (Eres lider) </span>
+					</a>
+				</div>
+			</div>
+
+			<div style="margin: 20px 20px 20px 20px;">
 				<div id="actividad1">
 					<a class="text-dark" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne">
 						Actividad 1
 					</a>
-					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#actividad1">
+					<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#actividad1">
 
 						<div class="card-body">
 							<div class="form-group row bg-light border border-secondary">
@@ -176,9 +184,6 @@ if (isset($_SESSION['id_usuario'])) {
 							</div>
 						</div>
 					</div>
-
-
-
 				</div>
 			</div>
 			<!--Main content END-->
@@ -248,7 +253,7 @@ if (isset($_SESSION['id_usuario'])) {
 				</div>
 
 				<div class="modal-footer d-flex justify-content-center">
-					<button type="button" class="btn btn-primary" data-target="principaluser.php">Aceptar</button>
+					<button type="button" class="btn btn-primary" data-target="#">Aceptar</button>
 				</div>
 			</div>
 		</div>
@@ -256,15 +261,15 @@ if (isset($_SESSION['id_usuario'])) {
 <!--...............................................FIN MODAL DE CREAR ACTIVIDAD....................................................-->
 
 
-<!--.....................................................MENU PRINCIPAL............................................................-->
-	<!--.....................................................CHAT............................................................-->
-	<div class="modal fade bd-example-modal-lg" id="chatgeneral" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header bg-primary">
+<!--.........................................................MODAL CREAR ITEM................................................................-->
+	<div class="modal" id="crearitem" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<div class="modal-header bg-primary">
 						<div class="col-1"></div>
 						<div class="col-10 modal-title text-center">
-							<h5 class="modal-title text-white font-weight-bold" id="myLargeModalLabel">Chat</h5>
+							<h5 class="modal-title text-white font-weight-bold" id="exampleModalLabel">Crear Item</h5>
 						</div>
 						<div class="col-1">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -272,6 +277,143 @@ if (isset($_SESSION['id_usuario'])) {
 							</button>
 						</div>
 					</div>
+
+				<div class="modal-body">
+
+					<form method="POST">
+						<div class="form-row">
+							<div class="form-group col-md-4">
+								<label for="nombreaitem">Nombre del item:</label>
+								<input type="text" name="nombreaitem" class="form-control border border-primary" id="nombreaitem">
+							</div>
+							<div class="form-group col-md-4">
+								<label for="encargado">Encargado:</label>
+								<select class="form-control border border-primary " name="encargado" id="encargado">
+									<option selected>...</option>
+									<option>Ali Mata</option>
+									<option>Miguel Angel Lugo</option>
+									<option>Angelymar Poyo</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label for="fechaentrega">Fecha de entrega:</label>
+								<input type="text" class="form-control date js-datepicker"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+							</div>
+						</div>
+
+						<a href="#masitems"  data-dismiss="modal" data-toggle="modal">
+							<div class="col-12 d-flex justify-content-center rounded-lg" style="background-color: #838383">
+								<img src="img/iconos/plus.png" width="30">
+							</div>
+						</a>
+
+					</form>
+
+				</div>
+
+				<div class="modal-footer d-flex justify-content-center">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" data-target="#" data-toggle="modal">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--.......................................................FIN MODAL CREAR ITEM..............................................................-->
+
+
+<!--.........................................................MODAL MAS ITEMS................................................................-->
+	<div class="modal" id="masitems" tabindex="-1" role="dialog"aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+
+				<div class="modal-header bg-primary">
+						<div class="col-1"></div>
+						<div class="col-10 modal-title text-center">
+							<h5 class="modal-title text-white font-weight-bold" id="exampleModalLabel">Crear Item</h5>
+						</div>
+						<div class="col-1">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+
+				<div class="modal-body">
+
+					<form method="POST">
+						<div class="form-row">
+							<div class="form-group col-md-4">
+								<label for="nombreaitem">Nombre del item:</label>
+								<input type="text" name="nombreaitem" class="form-control border border-primary" id="nombreaitem" value="Item #1">
+							</div>
+							<div class="form-group col-md-4">
+								<label for="encargado">Encargado:</label>
+								<select class="form-control border border-primary " name="encargado" id="encargado">
+									<option>...</option>
+									<option selected>Ali Mata</option>
+									<option>Miguel Angel Lugo</option>
+									<option>Angelymar Poyo</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label for="fechaentrega">Fecha de entrega:</label>
+								<input type="text" class="form-control date js-datepicker" value="9999/99/99"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-4">
+								<label for="nombreaitem">Nombre del item:</label>
+								<input type="text" name="nombreaitem" class="form-control border border-primary" id="nombreaitem">
+							</div>
+							<div class="form-group col-md-4">
+								<label for="encargado">Encargado:</label>
+								<select class="form-control border border-primary " name="encargado" id="encargado">
+									<option selected>...</option>
+									<option>Ali Mata</option>
+									<option>Miguel Angel Lugo</option>
+									<option>Angelymar Poyo</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label for="fechaentrega">Fecha de entrega:</label>
+								<input type="text" class="form-control date js-datepicker"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+							</div>
+						</div>
+
+						<a href="#">
+							<div class="col-12 d-flex justify-content-center rounded-lg" style="background-color: #838383">
+								<img src="img/iconos/plus.png" width="30">
+							</div>
+						</a>
+					</form>
+
+				</div>
+
+				<div class="modal-footer d-flex justify-content-center">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" data-target="principaluser.php">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--.......................................................FIN MODAL MAS ITEMS..............................................................-->
+
+
+<!--.....................................................MENU PRINCIPAL............................................................-->
+	<!--.....................................................CHAT............................................................-->
+	<div class="modal" id="chatgeneral" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<div class="col-1"></div>
+					<div class="col-10 modal-title text-center">
+						<h5 class="modal-title text-white font-weight-bold" id="myLargeModalLabel">Chat</h5>
+					</div>
+					<div class="col-1">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
 				<div class="modal-body">
 					<div class="container">
 						<div class="messaging">
@@ -347,7 +489,7 @@ if (isset($_SESSION['id_usuario'])) {
 				</div>
 
 				<div class="modal-footer d-flex justify-content-center">
-					<button type="submit" name="registrar" class="btn btn-primary">Aceptar</button>
+					<button data-dismiss="modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#principaluser.php">Aceptar</button>
 				</div>
 			</div>
 		</div>
@@ -439,25 +581,25 @@ if (isset($_SESSION['id_usuario'])) {
 						</button>
 						<h5 class="modal-title text-center text-white">Añadir participante</h5>
 					</div>
-
+					
 					<div class="modal-body">
 						<form>
 							<!--AGREGAR CONTACTOS-->
 							<ul class="nav nav-pills" style="height: 250px; overflow-y: scroll;">
-								<li class="nav-item">
-								<a class="nav-link btn-lg btn-block" href="#" >
-									<div class="d-flex flex-row">
-										<div class="p-2 bd-highlight col-10 " id="truncar-texto">
-											<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/user.png" width="18"></button> Contacto 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
-										</div>
-										<div class="p-2 bd-highlight justify-content-end col-2">
-											<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/40.png" width="18"></i></button>
-										</div>
-									</div>
-
-								</a>
-
-								</li>
+							  	<li class="nav-item">
+							    	<a class="nav-link btn-lg btn-block" href="#" >
+							    		<div class="d-flex flex-row">
+							    			<div class="p-2 bd-highlight col-10 " id="truncar-texto">
+							    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/user.png" width="18"></button> Contacto 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
+							    			</div>
+							    			<div class="p-2 bd-highlight justify-content-end col-2">
+							    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/40.png" width="18"></i></button>
+							    			</div>
+							    		</div>
+							    		
+							    	</a>
+							    	
+							  	</li>
 							</ul>
 
 							<div class="form-group">

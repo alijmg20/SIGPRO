@@ -56,7 +56,7 @@ if (isset($_SESSION['id_usuario'])) {
 			</div>
 			<div class="list-group list-group-flush">
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
-					<img src="img/iconos/group.png" width="40" style="padding-right: 10px;"> Equipo</a>
+					<img src="img/iconos/group.png" width="40" style="padding-right: 10px;"> Chat</a>
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/alarm.png" width="40" style="padding-right: 10px"> Alertas</a>
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
@@ -106,7 +106,7 @@ if (isset($_SESSION['id_usuario'])) {
 							<div style="padding-top: 5px">
 								<div class="d-flex justify-content-center" style="padding-bottom: 10px">
 									<a class="text-secondary" href="#">
-										<img src="img/iconos/groupblack.png" width="30" style="padding-right: 10px;"> Equipo</a>
+										<img src="img/iconos/groupblack.png" width="30" style="padding-right: 10px;">Chat</a>
 								</div>
 							</div>
 							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
@@ -135,152 +135,254 @@ if (isset($_SESSION['id_usuario'])) {
 			</nav>
 			<!-- /#page-content-wrapper -->		
 
-			<!--Main Content-->	
+			<!--Main Content-->
+			<div style="margin: 20px 20px 20px 20px;">
+				<a href="#crearactividad" data-toggle="modal">Crear actividad</a>
+			</div>
+
+			<div style="margin: 20px 20px 20px 20px;">
+				<div id="actividad1">
+					<a class="text-dark" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne">
+						Actividad 1
+					</a>
+					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#actividad1">
+
+						<div class="card-body">
+							<div class="form-group row bg-light border border-secondary">
+								<label for="item1" class="col-sm-11 col-form-label">Item #1</label>
+								<div class="col-sm-1 d-flex justify-content-end"  style="padding-top: 7px">
+									<input class="form-check-input" type="checkbox" id="item1" value="item1">
+								</div>
+							</div>
+							<div class="form-group row bg-light border border-secondary">
+								<label for="item2" class="col-sm-11 col-form-label">Item #2</label>
+								<div class="col-sm-1 d-flex justify-content-end"  style="padding-top: 7px">
+									<input class="form-check-input" type="checkbox" id="item2" value="item2">
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
 			<!--Main content END-->
 		</div>
 	</div>
 	<!-- /#wrapper -->
 
+<!--.................................................MODAL DE CREAR ACTIVIDAD......................................................-->
+	<div class="modal fade" id="crearactividad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
 
-<!--.....................................................EQUIPO............................................................-->
-<!--...................................................FIN EQUIPO..........................................................-->
-
-
-<!--.....................................................ALERTA............................................................-->
-<!--...................................................FIN ALERTA..........................................................-->
-
-
-<!--.....................................................CLIENTE............................................................-->
-<!--...................................................FIN CLIENTE..........................................................-->
-
-
-<!--.....................................................CONFIGURACION............................................................-->
-		<form method="POST" action="">
-			<div class="modal fade" tabindex="-1" role="dialog" id="configuracion" aria-hidden="true">
-				<div class="modal-dialog modal-md">
-					<div class="modal-content modal-content card mb-3">
-						<div class="card-header bg-primary">
+				<div class="modal-header bg-primary">
+						<div class="col-1"></div>
+						<div class="col-10 modal-title text-center">
+							<h5 class="modal-title text-white font-weight-bold" id="exampleModalLabel">Crear actividad</h5>
+						</div>
+						<div class="col-1">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
-							<h5 class="modal-title text-center text-white">Configuracion</h5>
+						</div>
+					</div>
+
+				<div class="modal-body">
+
+					<form method="POST">
+						<div class="form-group row">
+							<label for="nombreactividad" class="col-sm-6 col-form-label">Nombre de la actividad:</label>
+							<div class="col-sm-6">
+								<input type="text" name="nombreactividad" class="form-control border border-primary" id="nombreactividad">
+							</div>
 						</div>
 
-						<div class="modal-body">
-							<form>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-6">
-											<h6 class="pt-2">Nombre del proyecto:</h6>
-										</div>
-										<div class="col-6">
-											<input type="text" name="nombre_proyecto" class="form-control" placeholder="Proyecto">
-										</div>
-									</div>									
-								</div>
-								<!--DATEPICKER-->
-								<div class="form-group">
-									<div class="row">
-										<div class="col-6">
-											<h6 class="pt-2">Fecha de fin:</h6>
-										</div>
-										<div class="col-6 input-group date js-datepicker">
-											<input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-										</div>
-									</div>									
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-6">
-											<h6 class="pt-2">Participantes:</h6>
-										</div>
-										<div class="col-6">
-											<button type="button" class="btn btn-primary btn-lg btn-block" name="añadir_participante" data-toggle="modal" data-target="#añadir_participante">Añadir participantes</button>
-										</div>
-									</div>									
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-6">
-											<h6 class="pt-2">Comentario:</h6>
-										</div>
-										<div class="col-6">
-											<input type="text" name="comentario" class="form-control"  placeholder="Comentario">
-										</div>
-									</div>									
-								</div>
-							</form>
+						<div class="form-group row">
+							<label for="poncentajeactividad" class="col-sm-6 col-form-label">Porcentaje de actividad:</label>
+							<div class="col-sm-6">
+								<input type="text" name="poncentajeactividad" class="form-control border border-primary" id="poncentajeactividad">
+							</div>
 						</div>
 
-						<div class="modal-footer justify-content-center">
-							<button type="button" class="btn btn-primary px-5" data-dismiss="modal">Aceptar</button>
+						<div class="form-group row">
+							<label for="fechafin" class="col-sm-6 col-form-label">Fecha de entrega:</label>
+							<div class="input-group date js-datepicker col-sm-6">
+								<input type="text" name="fechafin" class="form-control"><span class="input-group-addon" id="fechafin"><i class="glyphicon glyphicon-th"></i></span>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="descripcion" class="col-sm-6 col-form-label">Descripcion:</label>
+							<div class="col-md-6">
+								<textarea class="form-control border border-primary" name="descripcion" id="descripcion" rows="3"></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="lideractividad" class="d-flex justify-content-center">Lider de la actividad:</label>
+							<select multiple class="form-control" id="lideractividad" name="lideractividad">
+								<option> Miguel Angel Lugo </option>
+								<option> 1 </option>
+								<option> 2 </option>
+							</select>
+						</div>
+
+					</form>
+
+				</div>
+
+				<div class="modal-footer d-flex justify-content-center">
+					<button type="button" class="btn btn-primary" data-target="principaluser.php">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--...............................................FIN MODAL DE CREAR ACTIVIDAD....................................................-->
+
+
+<!--.....................................................MENU PRINCIPAL............................................................-->
+	<!--.....................................................CHAT............................................................-->
+	<!--...................................................FIN CHAT..........................................................-->
+
+
+	<!--.....................................................ALERTA............................................................-->
+	<!--...................................................FIN ALERTA..........................................................-->
+
+
+	<!--.....................................................CLIENTE............................................................-->
+	<!--...................................................FIN CLIENTE..........................................................-->
+
+
+	<!--.....................................................CONFIGURACION............................................................-->
+			<form method="POST" action="">
+				<div class="modal fade" tabindex="-1" role="dialog" id="configuracion" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content modal-content card mb-3">
+							<div class="card-header bg-primary">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h5 class="modal-title text-center text-white">Configuracion</h5>
+							</div>
+
+							<div class="modal-body">
+								<form>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-6">
+												<h6 class="pt-2">Nombre del proyecto:</h6>
+											</div>
+											<div class="col-6">
+												<input type="text" name="nombre_proyecto" class="form-control" placeholder="Proyecto">
+											</div>
+										</div>									
+									</div>
+									<!--DATEPICKER-->
+									<div class="form-group">
+										<div class="row">
+											<div class="col-6">
+												<h6 class="pt-2">Fecha de fin:</h6>
+											</div>
+											<div class="col-6 input-group date js-datepicker">
+												<input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+											</div>
+										</div>									
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-6">
+												<h6 class="pt-2">Participantes:</h6>
+											</div>
+											<div class="col-6">
+												<button type="button" class="btn btn-primary btn-lg btn-block" name="añadir_participante" data-toggle="modal" data-target="#añadir_participante">Añadir participantes</button>
+											</div>
+										</div>									
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-6">
+												<h6 class="pt-2">Comentario:</h6>
+											</div>
+											<div class="col-6">
+												<input type="text" name="comentario" class="form-control"  placeholder="Comentario">
+											</div>
+										</div>									
+									</div>
+								</form>
+							</div>
+
+							<div class="modal-footer justify-content-center">
+								<button type="button" class="btn btn-primary px-5" data-dismiss="modal">Aceptar</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</form>
-		<!--AÑADIR PARTICIPANTE-->
-		<form method="POST" action="">
-			<div class="modal fade" tabindex="-1" role="dialog" id="añadir_participante" aria-hidden="true">
-				<div class="modal-dialog modal-md">
-					<div class="modal-content modal-content card mb-3">
-						<div class="card-header bg-primary">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-							<h5 class="modal-title text-center text-white">Añadir participante</h5>
-						</div>
-						
-						<div class="modal-body">
-							<form>
-								<!--AGREGAR CONTACTOS-->
-								<ul class="nav nav-pills" style="height: 250px; overflow-y: scroll;">
-								  	<li class="nav-item">
-								    	<a class="nav-link btn-lg btn-block" href="#" >
-								    		<div class="d-flex flex-row">
-								    			<div class="p-2 bd-highlight col-10 " id="truncar-texto">
-								    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/user.png" width="18"></button> Contacto 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
-								    			</div>
-								    			<div class="p-2 bd-highlight justify-content-end col-2">
-								    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/40.png" width="18"></i></button>
-								    			</div>
-								    		</div>
-								    		
-								    	</a>
-								    	
-								  	</li>
-								</ul>
+			</form>
+			<!--AÑADIR PARTICIPANTE-->
+			<form method="POST" action="">
+				<div class="modal fade" tabindex="-1" role="dialog" id="añadir_participante" aria-hidden="true">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content modal-content card mb-3">
+							<div class="card-header bg-primary">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h5 class="modal-title text-center text-white">Añadir participante</h5>
+							</div>
+							
+							<div class="modal-body">
+								<form>
+									<!--AGREGAR CONTACTOS-->
+									<ul class="nav nav-pills" style="height: 250px; overflow-y: scroll;">
+									  	<li class="nav-item">
+									    	<a class="nav-link btn-lg btn-block" href="#" >
+									    		<div class="d-flex flex-row">
+									    			<div class="p-2 bd-highlight col-10 " id="truncar-texto">
+									    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/user.png" width="18"></button> Contacto 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
+									    			</div>
+									    			<div class="p-2 bd-highlight justify-content-end col-2">
+									    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/40.png" width="18"></i></button>
+									    			</div>
+									    		</div>
+									    		
+									    	</a>
+									    	
+									  	</li>
+									</ul>
 
-								<div class="form-group">
-									<div class="row pt-3">
-										<div class="col-10">
-											<input class="form-control" placeholder="Introducir correo electronico">
-										</div>
-										<div class="col-2">
-											<button type="button" class="btn btn-primary btn-circle"><img src="img/iconos/40.png" width="32"></i></button>	
-										</div>
-									</div>									
-								</div>
-							</form>
-						</div>
+									<div class="form-group">
+										<div class="row pt-3">
+											<div class="col-10">
+												<input class="form-control" placeholder="Introducir correo electronico">
+											</div>
+											<div class="col-2">
+												<button type="button" class="btn btn-primary btn-circle"><img src="img/iconos/40.png" width="32"></i></button>	
+											</div>
+										</div>									
+									</div>
+								</form>
+							</div>
 
-						<div class="modal-footer justify-content-center">
-							<button type="button" class="btn btn-primary px-5" data-dismiss="modal">Aceptar</button>
+							<div class="modal-footer justify-content-center">
+								<button type="button" class="btn btn-primary px-5" data-dismiss="modal">Aceptar</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</form>	
-		<!--FIN AÑADIR PARTICIPANTE-->
-<!--...................................................FIN CONFIRGURACION..........................................................-->
+			</form>	
+			<!--FIN AÑADIR PARTICIPANTE-->
+	<!--...................................................FIN CONFIRGURACION..........................................................-->
 
 
-<!--.....................................................INFORMACION............................................................-->
-<!--...................................................FIN INFORMACION..........................................................-->
+	<!--.....................................................INFORMACION............................................................-->
+	<!--...................................................FIN INFORMACION..........................................................-->
 
 
-<!--.....................................................IR A PROYECTOS............................................................-->
-<!--...................................................FIN IR A PROYECTOS..........................................................-->
+	<!--.....................................................IR A PROYECTOS............................................................-->
+	<!--...................................................FIN IR A PROYECTOS..........................................................-->
+<!--...................................................FIN MENU PRINCIPAL..........................................................-->
 
 
 			<!--mensaje de que funciona la variable usuario PARA DEBUGIN-->

@@ -55,18 +55,25 @@ if (isset($_SESSION['id_usuario'])) {
 				<img src="logo/logo.png" width="180" height="60" class="d-inline-block align-top" alt="" loading="lazy">
 			</div>
 			<div class="list-group list-group-flush">
-				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
-					<img src="img/iconos/group.png" width="40" style="padding-right: 10px;"> Chat</a>
+				
+				<a href="#chatgeneral" data-toggle="modal" data-target=".bd-example-modal-lg" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
+					<img src="img/iconos/group.png" width="40" style="padding-right: 10px"> Chat</a>
+				
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/alarm.png" width="40" style="padding-right: 10px"> Alertas</a>
+				
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/client.png" width="40" style="padding-right: 10px"> Cliente</a>
+				
 				<a href="#configuracion" class="list-group-item list-group-item-action bg-primary text-white" data-toggle="modal" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/conf.png" width="40" style="padding-right: 10px"> Configuracion</a>
+				
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/info.png" width="40" style="padding-right: 10px"> Informacion</a>
+				
 				<a href="userwindow.php" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/back.png" width="40" style="padding-right: 10px"> Ir a proyectos</a>
+				
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->
@@ -103,32 +110,39 @@ if (isset($_SESSION['id_usuario'])) {
 							</div>
 						</li>
 						<li class="nav flex-column  d-sm-block d-md-none">
+							
 							<div style="padding-top: 5px">
 								<div class="d-flex justify-content-center" style="padding-bottom: 10px">
-									<a class="text-secondary" href="#">
-										<img src="img/iconos/groupblack.png" width="30" style="padding-right: 10px;">Chat</a>
+									<a class="text-secondary" href="#chatgeneral">
+										<img src="img/iconos/groupblack.png" width="30" style="padding-right: 10px">Chat</a>
 								</div>
 							</div>
+
 							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
 								<a class="text-secondary" href="#">
 									<img src="img/iconos/alarmblack.png" width="30" style="padding-right: 10px"> Alertas</a>
 							</div>
+
 							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
 								<a class="text-secondary" href="#">
 									<img src="img/iconos/clientblack.png" width="30" style="padding-right: 10px"> Cliente</a>
 							</div>
+
 							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
 								<a class="text-secondary" href="#">
 									<img src="img/iconos/confblack.png" width="30" style="padding-right: 10px"> Configuracion</a>
 							</div>
+
 							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
 								<a class="text-secondary" href="#">
 									<img src="img/iconos/infoblack.png" width="30" style="padding-right: 10px"> Informacion</a>
 							</div>
+
 							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
-								<a class="text-secondary" href="#">
+								<a class="text-secondary" href="userwindow.php">
 									<img src="img/iconos/backblack.png" width="30" style="padding-right: 10px"> Ir a proyectos</a>
 							</div>
+							
 						</li>
 					</ul>
 				</div>
@@ -244,6 +258,100 @@ if (isset($_SESSION['id_usuario'])) {
 
 <!--.....................................................MENU PRINCIPAL............................................................-->
 	<!--.....................................................CHAT............................................................-->
+	<div class="modal fade bd-example-modal-lg" id="chatgeneral" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<div class="col-1"></div>
+						<div class="col-10 modal-title text-center">
+							<h5 class="modal-title text-white font-weight-bold" id="myLargeModalLabel">Chat</h5>
+						</div>
+						<div class="col-1">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="messaging">
+							<div class="inbox_msg">
+								<div class="mesgs">
+									<div class="msg_history">
+
+										<div class="incoming_msg">
+											<div class="received_msg">
+												<div class="received_withd_msg">
+													<div class="textchat">
+														<strong class="primary-font">Miguelucho</strong>
+														<p>Auccilio mi bida ez hun desastre</p>
+													</div>
+													<span class="time_date"> 11:01 AM    |    Agosto 3</span>
+												</div>
+											</div>
+										</div>
+
+										<div class="outgoing_msg">
+											<div class="sent_msg">
+												<p>Que triste</p>
+												<span class="time_date"> 11:01 AM    |    Agosto 3</span> 
+											</div>
+										</div>
+
+										<div class="incoming_msg">
+											<div class="received_msg">
+												<div class="received_withd_msg">
+													<div class="textchat">
+														<strong class="primary-font">Aliño</strong>
+														<p>Miguelucho tu eres fuerte, vamos que tu puedes</p>
+													</div>
+													<span class="time_date"> 11:01 AM    |    Ayer</span>
+												</div>
+											</div>
+										</div>
+
+										<div class="outgoing_msg">
+											<div class="sent_msg">
+												<p>Amor fraternal</p>
+												<span class="time_date"> 11:01 AM    |    Hoy</span> 
+											</div>
+										</div>
+
+										<div class="incoming_msg">
+											<div class="received_msg">
+												<div class="received_withd_msg">
+													<div class="textchat">
+														<strong class="primary-font">Miguelucho</strong>
+														<p>Con esta amiga que me gasto quien necesita enemigos. Aliño eres lo maximo te quiero, eres un buen amigo</p>
+													</div>
+													<span class="time_date"> 11:01 AM    |    Hoy</span>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="type_msg">
+										<div class="input_msg_write">
+											<input type="text" class="write_msg" placeholder="Escribir mensaje" />
+											<button class="msg_send_btn" type="button">
+												<img src="img/iconos/sendsuccess.png" id="enviarchat">
+											</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer d-flex justify-content-center">
+					<button type="submit" name="registrar" class="btn btn-primary">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!--...................................................FIN CHAT..........................................................-->
 
 
@@ -256,123 +364,123 @@ if (isset($_SESSION['id_usuario'])) {
 
 
 	<!--.....................................................CONFIGURACION............................................................-->
-			<form method="POST" action="">
-				<div class="modal fade" tabindex="-1" role="dialog" id="configuracion" aria-hidden="true">
-					<div class="modal-dialog modal-md">
-						<div class="modal-content modal-content card mb-3">
-							<div class="card-header bg-primary">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h5 class="modal-title text-center text-white">Configuracion</h5>
-							</div>
+	<form method="POST" action="">
+		<div class="modal fade" tabindex="-1" role="dialog" id="configuracion" aria-hidden="true">
+			<div class="modal-dialog modal-md">
+				<div class="modal-content modal-content card mb-3">
+					<div class="card-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h5 class="modal-title text-center text-white">Configuracion</h5>
+					</div>
 
-							<div class="modal-body">
-								<form>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-6">
-												<h6 class="pt-2">Nombre del proyecto:</h6>
-											</div>
-											<div class="col-6">
-												<input type="text" name="nombre_proyecto" class="form-control" placeholder="Proyecto">
-											</div>
-										</div>									
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<h6 class="pt-2">Nombre del proyecto:</h6>
 									</div>
-									<!--DATEPICKER-->
-									<div class="form-group">
-										<div class="row">
-											<div class="col-6">
-												<h6 class="pt-2">Fecha de fin:</h6>
-											</div>
-											<div class="col-6 input-group date js-datepicker">
-												<input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-											</div>
-										</div>									
+									<div class="col-6">
+										<input type="text" name="nombre_proyecto" class="form-control" placeholder="Proyecto">
 									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-6">
-												<h6 class="pt-2">Participantes:</h6>
-											</div>
-											<div class="col-6">
-												<button type="button" class="btn btn-primary btn-lg btn-block" name="añadir_participante" data-toggle="modal" data-target="#añadir_participante">Añadir participantes</button>
-											</div>
-										</div>									
-									</div>
-									<div class="form-group">
-										<div class="row">
-											<div class="col-6">
-												<h6 class="pt-2">Comentario:</h6>
-											</div>
-											<div class="col-6">
-												<input type="text" name="comentario" class="form-control"  placeholder="Comentario">
-											</div>
-										</div>									
-									</div>
-								</form>
+								</div>									
 							</div>
+							<!--DATEPICKER-->
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<h6 class="pt-2">Fecha de fin:</h6>
+									</div>
+									<div class="col-6 input-group date js-datepicker">
+										<input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+									</div>
+								</div>									
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<h6 class="pt-2">Participantes:</h6>
+									</div>
+									<div class="col-6">
+										<button type="button" class="btn btn-primary btn-lg btn-block" name="añadir_participante" data-toggle="modal" data-target="#añadir_participante">Añadir participantes</button>
+									</div>
+								</div>									
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<h6 class="pt-2">Comentario:</h6>
+									</div>
+									<div class="col-6">
+										<input type="text" name="comentario" class="form-control"  placeholder="Comentario">
+									</div>
+								</div>									
+							</div>
+						</form>
+					</div>
 
-							<div class="modal-footer justify-content-center">
-								<button type="button" class="btn btn-primary px-5" data-dismiss="modal">Aceptar</button>
-							</div>
-						</div>
+					<div class="modal-footer justify-content-center">
+						<button type="button" class="btn btn-primary px-5" data-dismiss="modal">Aceptar</button>
 					</div>
 				</div>
-			</form>
-			<!--AÑADIR PARTICIPANTE-->
-			<form method="POST" action="">
-				<div class="modal fade" tabindex="-1" role="dialog" id="añadir_participante" aria-hidden="true">
-					<div class="modal-dialog modal-md">
-						<div class="modal-content modal-content card mb-3">
-							<div class="card-header bg-primary">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h5 class="modal-title text-center text-white">Añadir participante</h5>
-							</div>
-							
-							<div class="modal-body">
-								<form>
-									<!--AGREGAR CONTACTOS-->
-									<ul class="nav nav-pills" style="height: 250px; overflow-y: scroll;">
-									  	<li class="nav-item">
-									    	<a class="nav-link btn-lg btn-block" href="#" >
-									    		<div class="d-flex flex-row">
-									    			<div class="p-2 bd-highlight col-10 " id="truncar-texto">
-									    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/user.png" width="18"></button> Contacto 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
-									    			</div>
-									    			<div class="p-2 bd-highlight justify-content-end col-2">
-									    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/40.png" width="18"></i></button>
-									    			</div>
-									    		</div>
-									    		
-									    	</a>
-									    	
-									  	</li>
-									</ul>
+			</div>
+		</div>
+	</form>
+	<!--AÑADIR PARTICIPANTE-->
+	<form method="POST" action="">
+		<div class="modal fade" tabindex="-1" role="dialog" id="añadir_participante" aria-hidden="true">
+			<div class="modal-dialog modal-md">
+				<div class="modal-content modal-content card mb-3">
+					<div class="card-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h5 class="modal-title text-center text-white">Añadir participante</h5>
+					</div>
 
-									<div class="form-group">
-										<div class="row pt-3">
-											<div class="col-10">
-												<input class="form-control" placeholder="Introducir correo electronico">
-											</div>
-											<div class="col-2">
-												<button type="button" class="btn btn-primary btn-circle"><img src="img/iconos/40.png" width="32"></i></button>	
-											</div>
-										</div>									
+					<div class="modal-body">
+						<form>
+							<!--AGREGAR CONTACTOS-->
+							<ul class="nav nav-pills" style="height: 250px; overflow-y: scroll;">
+								<li class="nav-item">
+								<a class="nav-link btn-lg btn-block" href="#" >
+									<div class="d-flex flex-row">
+										<div class="p-2 bd-highlight col-10 " id="truncar-texto">
+											<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/user.png" width="18"></button> Contacto 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
+										</div>
+										<div class="p-2 bd-highlight justify-content-end col-2">
+											<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/40.png" width="18"></i></button>
+										</div>
 									</div>
-								</form>
-							</div>
 
-							<div class="modal-footer justify-content-center">
-								<button type="button" class="btn btn-primary px-5" data-dismiss="modal">Aceptar</button>
+								</a>
+
+								</li>
+							</ul>
+
+							<div class="form-group">
+								<div class="row pt-3">
+									<div class="col-10">
+										<input class="form-control" placeholder="Introducir correo electronico">
+									</div>
+									<div class="col-2">
+										<button type="button" class="btn btn-primary btn-circle"><img src="img/iconos/40.png" width="32"></i></button>	
+									</div>
+								</div>									
 							</div>
-						</div>
+						</form>
+					</div>
+
+					<div class="modal-footer justify-content-center">
+						<button type="button" class="btn btn-primary px-5" data-dismiss="modal">Aceptar</button>
 					</div>
 				</div>
-			</form>	
-			<!--FIN AÑADIR PARTICIPANTE-->
+			</div>
+		</div>
+	</form>	
+	<!--FIN AÑADIR PARTICIPANTE-->
 	<!--...................................................FIN CONFIRGURACION..........................................................-->
 
 

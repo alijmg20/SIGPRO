@@ -143,6 +143,6 @@
 }
 .messaging { padding: 0 0 50px 0;}
 .msg_history {
-  height: 430px;
+  height: 405px;
   overflow-y: auto;
 }

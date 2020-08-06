@@ -1,20 +1,23 @@
 <?php
 
 include_once '../Controlador/conexion.inc.php';
+
+
 if (isset($_POST["boton_agregar_contacto"])) {
     $correo_usuario = $_POST["correo_contacto"];
-    if (relacion_repetida($correo_usuario, $conexion) == 1) { //FUNCION PARA VER SI EXISTE EL CLIENTE REGISTRADO
+    if (relacion_repetida($correo_usuario, $conexion,$usuario['id']) === 1) { //FUNCION PARA VER SI EXISTE EL CLIENTE REGISTRADO
 
         $mensaje = 'before_cliente';
         
     } else if (!empty($correo_usuario)) {
-        $sql = 'SELECT * FROM usuarios WHERE correo ='.$correo_usuario;
+        $sql = "SELECT * FROM usuarios WHERE correo = :email";
         $consulta = $conexion->prepare($sql);
+        $consulta->bindParam(':email', $correo_usuario, PDO::PARAM_STR);
         $consulta->execute();
-        $resultado = $consulta->fetchColumn();
-        $id_contacto = $resultado['id'];
+        $resultados = $consulta->fetch(PDO::FETCH_ASSOC);
+        $id_contacto = $resultados['id'];  
         $id_usuario = $usuario['id'];
-        $sql = 'INSERT INTO relacion_usuario_usuario(id_usuario,id_contacto) VALUES (:id_usuario,:id_contacto)';
+        $sql = 'INSERT INTO relacion_usuario_usuario (id_usuario,id_contacto) VALUES (:id_usuario,:id_contacto)';
         $consulta = $conexion->prepare($sql);
         if ($consulta->execute(array(
             ':id_usuario' => $id_usuario,
@@ -27,26 +30,25 @@ if (isset($_POST["boton_agregar_contacto"])) {
 
 
 // verificar si existe un correo del cliente ya registrado 
-function relacion_repetida($correo, $conexion)
+function relacion_repetida($correo_usuario, $conexion,$usuario)
 {
-    $sql = "SELECT COUNT(*) FROM relacion_usuario_usuario INNER JOIN usuarios
-    ON relacion_usuario_usuario.id_contacto = usuarios.id 
-    WHERE usuarios.correo =" . $correo;
-
+    $sql = "SELECT * FROM usuarios WHERE correo = :email";
     $consulta = $conexion->prepare($sql);
+    $consulta->bindParam(':email', $correo_usuario, PDO::PARAM_STR);
+    $consulta->execute();
+    $resultados = $consulta->fetch(PDO::FETCH_ASSOC);
+    $id_contacto = $resultados['id'];  
+
+    $sql = 'SELECT COUNT(*) FROM relacion_usuario_usuario WHERE id_usuario = :id_usuario AND id_contacto = :id_contacto';
+    $consulta = $conexion->prepare($sql);
+    $consulta->bindParam(':id_usuario', $usuario, PDO::PARAM_STR);
+    $consulta->bindParam(':id_contacto', $id_contacto, PDO::PARAM_STR);
     $consulta->execute();
     $aux = $consulta->fetchColumn();
-
-    $sql = "SELECT COUNT(*) FROM relacion_usuario_usuario INNER JOIN usuarios
-    ON relacion_usuario_usuario.id_usuario = usuarios.id WHERE usuarios.correo =" . $correo;
-
-    $consulta = $conexion->prepare($sql);
-    $consulta->execute();
-    $aux2 = $consulta->fetchColumn();
-
-    if ($aux > 0 || $aux2 > 0) {
+    if ($aux > 0) {
         return 1;
     } else {
         return 0;
     }
+
 }

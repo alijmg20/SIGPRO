@@ -20,20 +20,20 @@ if (isset($_SESSION['id_usuario'])) {
 	$usuario = $resultado;
 }
 
-
+include_once '../Modelo/agregar_contacto.inc.php';
 
 
 $mensaje = '';
 $cliente = '';
 $proyecto = 0;
 
-include_once '../Modelo/agregar_contacto.inc.php';
+
 
 include_once '../Modelo/agregar_cliente.inc.php';
 
 include_once '../Modelo/crear_proyecto.inc.php';
 
-//include_once '../Modelo/agregar_participante.inc.php';
+include_once '../Modelo/agregar_participante.inc.php';
 
 include_once '../Modelo/mostrarContactos.inc.php';
 include_once '../Modelo/mostrarProyectos.inc.php';
@@ -177,6 +177,7 @@ $proyecto = 0;
 			<?php
 			//PRUEBA DE QUE FUNCIONA LA FUNCION DE AGREGAR CLIENTE;
 			//echo $proyecto; 
+			//echo $id_contacto;
 			?>
 
 

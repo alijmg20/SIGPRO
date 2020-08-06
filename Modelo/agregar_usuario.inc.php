@@ -24,8 +24,11 @@ if (isset($_POST['registro'])) {
     if (!empty($nombre_completo) && !empty($correo_registro) && !empty($password_registro) && !empty($password_confirmacion)) {
         if (buscarRepetidos($correo_registro, $conexion) ==1 ) {
             $mensaje = 'before_register';
+        }else if(!filter_var($correo_registro,FILTER_VALIDATE_EMAIL)){
+            $mensaje = 'bad_email';
+            return;
         } else {
-            if ($password_confirmacion === $password_registro) {
+            if ($password_confirmacion === $password_registro ) {
 
                 $sql = 'INSERT INTO usuarios(nombre_completo,correo,clave) VALUES (:nombre_completo,:correo,:clave)';
                 $consulta = $conexion->prepare($sql);
@@ -38,7 +41,8 @@ if (isset($_POST['registro'])) {
                 ))) {
                     $mensaje = 'successfull';
                 }
-            } else {
+            }
+             else {
                 $mensaje = 'bad_password';
             }
         }

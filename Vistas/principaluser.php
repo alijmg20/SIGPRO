@@ -21,6 +21,11 @@ if (isset($_SESSION['id_usuario'])) {
 	$usuario = $resultado;
 }
 
+$mensaje = '';
+$proyecto = 0;
+include_once '../Modelo/mostrarContactos.inc.php'; 
+include_once '../Modelo/crear_actividad.inc.php';
+$mensaje = '';
 
 ?>
 
@@ -192,10 +197,12 @@ if (isset($_SESSION['id_usuario'])) {
 	<!-- /#wrapper -->
 
 <!--.................................................MODAL DE CREAR ACTIVIDAD......................................................-->
-	<div class="modal fade" id="crearactividad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form method="POST">
+    <div class="modal fade" id="crearactividad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
+		
 			<div class="modal-content">
-
+            
 				<div class="modal-header bg-primary">
 						<div class="col-1"></div>
 						<div class="col-10 modal-title text-center">
@@ -210,7 +217,7 @@ if (isset($_SESSION['id_usuario'])) {
 
 				<div class="modal-body">
 
-					<form method="POST">
+					
 						<div class="form-group row">
 							<label for="nombreactividad" class="col-sm-6 col-form-label">Nombre de la actividad:</label>
 							<div class="col-sm-6">
@@ -241,23 +248,35 @@ if (isset($_SESSION['id_usuario'])) {
 
 						<div class="form-group">
 							<label for="lideractividad" class="d-flex justify-content-center">Lider de la actividad:</label>
-							<select multiple class="form-control" id="lideractividad" name="lideractividad">
-								<option> Miguel Angel Lugo </option>
-								<option> 1 </option>
-								<option> 2 </option>
+							<select multiple class="form-control" name ="lider_actividad[]" id="lideractividad" name="lideractividad">
+							<?php
+								if (!empty($contactoVistaUsuario)) {
+									foreach ($contactoVistaUsuario as $fila) :
+								?>
+										<option value="<?php echo $fila['id'] ?>"> <?php echo $fila['nombre_completo'] ?> </option>
+									<?php endforeach;
+								}
+								if (!empty($ContactoVistaContacto)) {
+									foreach ($ContactoVistaContacto as $fila) :
+									?>
+										<option value="<?php echo $fila['id'] ?>"> <?php echo $fila['nombre_completo'] ?> </option>
+								<?php endforeach;
+								} ?>
 							</select>
 						</div>
 
-					</form>
+					
 
 				</div>
 
 				<div class="modal-footer d-flex justify-content-center">
-					<button type="button" class="btn btn-primary" data-target="#">Aceptar</button>
+					<button type="submit" name = "guardar" class="btn btn-primary" data-target="#">Aceptar</button>
 				</div>
+				
 			</div>
 		</div>
 	</div>
+</form>
 <!--...............................................FIN MODAL DE CREAR ACTIVIDAD....................................................-->
 
 

@@ -68,7 +68,7 @@ $mensaje = '';
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/alarm.png" width="40" style="padding-right: 10px"> Alertas</a>
 				
-				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
+				<a href="#clientmsj" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/client.png" width="40" style="padding-right: 10px"> Cliente</a>
 				
 				<a href="#configuracion" class="list-group-item list-group-item-action bg-primary text-white" data-toggle="modal" style="padding-top: 20px; padding-bottom: 20px">
@@ -129,7 +129,7 @@ $mensaje = '';
 							</div>
 
 							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
-								<a class="text-secondary" href="#">
+								<a class="text-secondary" href="#clientmsj" data-toggle="modal">
 									<img src="img/iconos/clientblack.png" width="30" style="padding-right: 10px"> Cliente</a>
 							</div>
 
@@ -521,6 +521,34 @@ $mensaje = '';
 
 
 	<!--.....................................................CLIENTE............................................................-->
+	<div class="modal" id="clientmsj" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header bg-primary">
+					<div class="col-1"></div>
+					<div class="col-10 modal-title text-center">
+						<h5 class="modal-title text-white font-weight-bold" id="myLargeModalLabel">Mensajeria al cliente</h5>
+					</div>
+					<div class="col-1">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+				<div class="modal-body">
+					<form method="POST">
+						<div class="form-group">
+							<label for="msjalcliente">Escribir mensaje</label>
+							<textarea class="form-control" id="msjalcliente" name="msjalcliente" rows="3"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer d-flex justify-content-center">
+					<button data-dismiss="modal" type="button" class="btn btn-primary" disabled="">Enviar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!--...................................................FIN CLIENTE..........................................................-->
 
 

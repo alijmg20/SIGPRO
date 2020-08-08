@@ -39,7 +39,7 @@ if (isset($_POST['registrar'])) {
     }
 
     if (!empty($nombre) && !empty($descripcion_proyecto) && !empty($usuario_proyecto) && !empty($cliente_proyecto) && !empty($fecha_final_proyecto)) {
-        if (nombres_Repetidos($nombre, $conexion) ==1 ) { // validacion para no tener proyectos con el mismo nombre
+        if (nombres_Repetidos($nombre, $conexion,$usuario['id']) ==1 ) { // validacion para no tener proyectos con el mismo nombre
             $mensaje = 'Ya existe un proyecto con ese nombre';
         } else {
 
@@ -76,11 +76,12 @@ if (isset($_POST['registrar'])) {
 
 //Funcion para buscar nombre de proyectos repetidos 
 //----------------------------------------------------------------
-function nombres_Repetidos($nombre, $conexion)
-{
-    $sql = "SELECT COUNT(*) FROM proyecto WHERE nombre = :nombre";
+function nombres_Repetidos($nombre, $conexion,$id_usuario)
+{   
+    $sql = "SELECT COUNT(*) FROM proyecto WHERE nombre = :nombre AND id_usuario = :id_usuario ";
     $consulta = $conexion->prepare($sql);
     $consulta->bindParam(':nombre',$nombre,PDO::PARAM_STR);
+    $consulta->bindParam(':id_usuario',$id_usuario,PDO::PARAM_STR);
     $consulta->execute();
     $contador = $consulta->fetchColumn();
     if ($n = ($contador > 0)) {

@@ -151,15 +151,16 @@
   position: absolute;
   width: 300px;
   background: #ececec;
-  height: 90.1%;
+  height: 87%;
+  position: sticky;
 }
 
-.contenerdorinfo p {
+.etiquetainfo {
   margin-left: 10px;
   font-size: 18px;
 }
 
-.contenerdorinfo input {
+.infoetiqueta {
+  text-align: right;
   margin-right: 10px;
-  direction: rtl;
 }

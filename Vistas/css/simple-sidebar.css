@@ -146,3 +146,20 @@
   height: 405px;
   overflow-y: auto;
 }
+
+.contenerdorinfo {
+  position: absolute;
+  width: 300px;
+  background: #ececec;
+  height: 90.1%;
+}
+
+.contenerdorinfo p {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.contenerdorinfo input {
+  margin-right: 10px;
+  direction: rtl;
+}

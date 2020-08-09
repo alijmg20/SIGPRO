@@ -75,7 +75,7 @@ $mensaje = '';
 				<a href="#configuracion" class="list-group-item list-group-item-action bg-primary text-white" data-toggle="modal" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/conf.png" width="40" style="padding-right: 10px"> Configuracion</a>
 				
-				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
+				<a href="#continfo" data-toggle="collapse" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/info.png" width="40" style="padding-right: 10px"> Informacion</a>
 				
 				<a href="userwindow.php" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
@@ -152,7 +152,7 @@ $mensaje = '';
 							</div>
 
 							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
-								<a class="text-secondary" href="#">
+								<a class="text-secondary" href="#continfo" data-toggle="collapse">
 									<img src="img/iconos/infoblack.png" width="30" style="padding-right: 10px"> Informacion</a>
 							</div>
 
@@ -168,7 +168,52 @@ $mensaje = '';
 			<!-- /#page-content-wrapper -->		
 
 			<!--Main Content-->
-						<div style="margin: 20px 20px 20px 20px;">
+			
+<!--.................................................INFORMACION......................................................-->
+			<div class="contenerdorinfo collapse" id="continfo">
+				<h4 class="d-flex justify-content-center" style="margin-top: 10px">Informacion</h4>
+
+				<p style="margin-top: 20px">Fecha de inicio</p>
+				<div class="d-flex justify-content-end">
+					<input type="text" class="form-control-plaintext" id="fechaentrega" value="2020/07/17">
+				</div>
+
+				<p>Fecha de entrega</p>
+				<div class="d-flex justify-content-end">
+					<input type="text" class="form-control-plaintext" id="fechafin" value="2020/08/12">
+				</div>
+
+				<p>Tiempo restante</p>
+				<div class="d-flex justify-content-end">
+					<input type="text" class="form-control-plaintext" id="faltante" value="4dias">
+				</div>
+
+				<p>Porcentaje completado</p>
+				<div class="d-flex justify-content-end">
+					<input type="text" class="form-control-plaintext" id="terminado" value="60%">
+				</div>
+
+				<p>Descripcion</p>
+				<div class="d-flex justify-content-end">
+					<input type="text" class="form-control-plaintext" id="descripcion" value="Haciendo milagros">
+				</div>
+			</div>
+<!--...............................................FIN ACTIVIDAD....................................................-->
+
+			<div style="margin: 20px 20px 20px 20px;">
+				<a href="#crearactividad" data-toggle="modal">Crear actividad</a>
+			</div>
+
+			<div style="margin: 20px 20px 20px 20px;">
+				<div id="actividadnueva">
+					<a data-toggle="modal" href="#crearitem" class="text-dark">
+						Actividad 0 <span style="color: #252bff;"> (Nuevo) (Eres lider) </span>
+					</a>
+				</div>
+			</div>
+			
+			
+			<div style="margin: 20px 20px 20px 20px;">
 				<a href="#crearactividad" data-toggle="modal">Crear actividad</a>
 			</div>
 

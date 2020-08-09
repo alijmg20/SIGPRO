@@ -171,34 +171,33 @@ $mensaje = '';
 			
 <!--.................................................INFORMACION......................................................-->
 			<div class="contenerdorinfo collapse" id="continfo">
-				<h4 class="d-flex justify-content-center" style="margin-top: 10px">Informacion</h4>
 
-				<p style="margin-top: 20px">Fecha de inicio</p>
-				<div class="d-flex justify-content-end">
-					<input type="text" class="form-control-plaintext" id="fechaentrega" value="2020/07/17">
+				<div class="d-flex justify-content-end" style="margin-right: 5px; margin-top: 5px;">
+					<button type="button" class="close" data-toggle="collapse" data-dismiss="collapse" data-target="#continfo" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
 
-				<p>Fecha de entrega</p>
-				<div class="d-flex justify-content-end">
-					<input type="text" class="form-control-plaintext" id="fechafin" value="2020/08/12">
-				</div>
+				<h4 class="d-flex justify-content-center">Informacion</h4>
 
-				<p>Tiempo restante</p>
-				<div class="d-flex justify-content-end">
-					<input type="text" class="form-control-plaintext" id="faltante" value="4dias">
-				</div>
+				<p class="etiquetainfo" style="margin-top: 20px">Fecha de inicio</p>
+				<p class="infoetiqueta">2020/07/17</p>
+				
+				<p class="etiquetainfo">Fecha de entrega</p>
+				<p class="infoetiqueta">2020/08/12</p>
 
-				<p>Porcentaje completado</p>
-				<div class="d-flex justify-content-end">
-					<input type="text" class="form-control-plaintext" id="terminado" value="60%">
-				</div>
+				<p class="etiquetainfo">Tiempo restante</p>
+				<p class="infoetiqueta">4 dias</p>
 
-				<p>Descripcion</p>
-				<div class="d-flex justify-content-end">
-					<input type="text" class="form-control-plaintext" id="descripcion" value="Haciendo milagros">
+				<p class="etiquetainfo">Porcentaje completado</p>
+				<p class="infoetiqueta">60%</p>
+
+				<p class="etiquetainfo">Descripcion</p>
+				<div class="infoetiqueta">
+					<p class="text-break">Haciendo milagos aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas</p>
 				</div>
 			</div>
-<!--...............................................FIN ACTIVIDAD....................................................-->
+<!--...............................................FIN INFORMACION....................................................-->
 
 			<div style="margin: 20px 20px 20px 20px;">
 				<a href="#crearactividad" data-toggle="modal">Crear actividad</a>

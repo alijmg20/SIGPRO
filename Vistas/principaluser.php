@@ -27,6 +27,7 @@ include_once '../Modelo/mostrarContactos.inc.php';
 include_once '../Modelo/crear_actividad.inc.php';
 $mensaje = '';
 
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +47,7 @@ $mensaje = '';
 	<link href="css/simple-sidebar.css" rel="stylesheet">
 	<!--DatePicker-->	
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-
+	<!-- <META HTTP-EQUIV="REFRESH" CONTENT="2"> -->
 
 </head>
 
@@ -62,7 +63,7 @@ $mensaje = '';
 			</div>
 			<div class="list-group list-group-flush">
 
-				<a href="#chatgeneral" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
+			    <a href="#chatgeneral" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/group.png" width="40" style="padding-right: 10px"> Chat</a>
 				
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
@@ -79,6 +80,7 @@ $mensaje = '';
 				
 				<a href="userwindow.php" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/back.png" width="40" style="padding-right: 10px"> Ir a proyectos</a>
+		
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->
@@ -93,7 +95,18 @@ $mensaje = '';
 				</div>
 
 				<div style="padding-top: 10px">
-					<h5> Nombre del proyecto</h5>
+					<!--1 Nombre proyecto -->
+					<h5>
+						<?php if(isset($_GET['id'])){ 
+								
+								$id = $_GET['id'];
+								$sql="SELECT * FROM proyecto WHERE id=$id ";
+								$result=$conexion->prepare($sql);
+								$result->execute(array("NameProyect"));
+								$name = $result->fetch(PDO::FETCH_ASSOC);
+								echo $name['nombre'];
+							}						?>
+					</h5>
 				</div>
 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -155,42 +168,62 @@ $mensaje = '';
 			<!-- /#page-content-wrapper -->		
 
 			<!--Main Content-->
-			<div style="margin: 20px 20px 20px 20px;">
+						<div style="margin: 20px 20px 20px 20px;">
 				<a href="#crearactividad" data-toggle="modal">Crear actividad</a>
 			</div>
 
-			<div style="margin: 20px 20px 20px 20px;">
-				<div id="actividadnueva">
-					<a data-toggle="modal" href="#crearitem" class="text-dark">
-						Actividad 0 <span style="color: #252bff;"> (Nuevo) (Eres lider) </span>
-					</a>
-				</div>
-			</div>
+			<!--2 Contenido de actividades  -->
+				<table class="table table-bordered">
+					<thead>
+					<tr>
+						
+						<th>Nombre</th>
+						<th>Descripcion</th>
+						<th>Lider</th>
+						<th>Terminado </th>
+						<th>Fecha de inicio</th>
+						<th>Fecha de cierre</th>
+					</tr>
+					</thead>
+					<tbody>
 
-			<div style="margin: 20px 20px 20px 20px;">
-				<div id="actividad1">
-					<a class="text-dark" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseOne">
-						Actividad 1
-					</a>
-					<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#actividad1">
+					<?php
+					// tomo bbd actividades y las muestro
+					// mostrar actividades
+						$sql="SELECT * FROM actividades WHERE id_proyecto=$id";
+						$resultado=$conexion->prepare($sql);
+						$resultado->execute(array("Actividades"));
+						$consulta = $resultado->fetch(PDO::FETCH_ASSOC);
+						$idlider =$consulta['id_usuario']; 
+						// Toma de lideres 
+						// echo $idlider;
+						$sqlider="SELECT nombre_completo FROM usuarios WHERE id=$idlider";
+						$lider_result=$conexion->prepare($sqlider);
+						$lider_result->execute(array("Lideres"));
+						$namelider = $lider_result->fetch(PDO::FETCH_ASSOC);
+						
+						while($aux = $resultado->fetch(PDO::FETCH_ASSOC)) { ?>
+						<tr>
+							
+							<td>
+								<a data-toggle="modal" href="#crearitem" class="text-dark">
+								<?php echo $aux['nombre']; ?>
+								</a>
+							</td>
+							<td><?php echo $aux['descripcion']; ?></td>
+							<td><?php echo $namelider['nombre_completo']; ?></td>
+							<td><?php echo $aux['terminado']; ?></td>
+							<td><?php echo $aux['fecha_inicio']; ?></td>
+							<td><?php echo $aux['fecha_final']; ?></td>
+						</tr>
+						<?php } ?>
+							</tbody>
+				</table>
+		
 
-						<div class="card-body">
-							<div class="form-group row bg-light border border-secondary">
-								<label for="item1" class="col-sm-11 col-form-label">Item #1</label>
-								<div class="col-sm-1 d-flex justify-content-end"  style="padding-top: 7px">
-									<input class="form-check-input" type="checkbox" id="item1" value="item1">
-								</div>
-							</div>
-							<div class="form-group row bg-light border border-secondary">
-								<label for="item2" class="col-sm-11 col-form-label">Item #2</label>
-								<div class="col-sm-1 d-flex justify-content-end"  style="padding-top: 7px">
-									<input class="form-check-input" type="checkbox" id="item2" value="item2">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+
+
+
 			<!--Main content END-->
 		</div>
 	</div>
@@ -284,7 +317,6 @@ $mensaje = '';
 	<div class="modal" id="crearitem" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
-
 				<div class="modal-header bg-primary">
 						<div class="col-1"></div>
 						<div class="col-10 modal-title text-center">
@@ -297,14 +329,32 @@ $mensaje = '';
 						</div>
 					</div>
 
-				<div class="modal-body">
 
-					<form method="POST">
+				<form action="../Modelo/agregar_actividades_item.php"  method="POST">
+					<div class="modal-body">
 						<div class="form-row">
+							<!-- ================================================== -->
 							<div class="form-group col-md-4">
 								<label for="nombreaitem">Nombre del item:</label>
-								<input type="text" name="nombreaitem" class="form-control border border-primary" id="nombreaitem">
+								<input type="text" name="nombreaitem" class="form-control border border-primary" id="nombreaitem" placeholder="Nombre" >
 							</div>
+
+
+
+
+
+						<!-- mando la url a agregar_actividades_item.php para poder regresarme -->
+								<!-- <?echo $url = "http://".$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+																echo $url;
+								?>
+							<input type="hidden" name="url" value="<?php echo $url = "http://".$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];?>" /> -->
+
+
+
+
+
+
+
 							<div class="form-group col-md-4">
 								<label for="encargado">Encargado:</label>
 								<select class="form-control border border-primary " name="encargado" id="encargado">
@@ -314,112 +364,37 @@ $mensaje = '';
 									<option>Angelymar Poyo</option>
 								</select>
 							</div>
+							<!-- ================================================== -->
 							<div class="form-group col-md-4">
 								<label for="fechaentrega">Fecha de entrega:</label>
-								<input type="text" class="form-control date js-datepicker"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+								<input type="text" name="fechaEntrega" class="form-control date js-datepicker"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 							</div>
 						</div>
-
-						<a href="#masitems"  data-dismiss="modal" data-toggle="modal">
-							<div class="col-12 d-flex justify-content-center rounded-lg" style="background-color: #838383">
+							<!-- Mas items================================================== -->
+							<a href="#masitems"  data-dismiss="modal" data-toggle="modal">
+								<div class="col-12 d-flex justify-content-center rounded-lg" style="background-color: #838383">
 								<img src="img/iconos/plus.png" width="30">
-							</div>
-						</a>
+								</div>
+							</a>
+						<div class="modal-footer d-flex justify-content-center">
+								<button type="submit" name="add_item" class="btn btn-primary" data-toggle="modal">Aceptar</button>
+								<!-- <button type="submit" name="add_item" class="btn btn-primary" data-dismiss="modal" data-target="principaluser.php" data-toggle="modal">Aceptar</button> -->
+						</div>
+					</div>
+				</form>
 
-					</form>
 
-				</div>
-
-				<div class="modal-footer d-flex justify-content-center">
-					<button type="button" class="btn btn-primary" data-dismiss="modal" data-target="#" data-toggle="modal">Aceptar</button>
-				</div>
 			</div>
 		</div>
 	</div>
 <!--.......................................................FIN MODAL CREAR ITEM..............................................................-->
 
 
-<!--.........................................................MODAL MAS ITEMS................................................................-->
-	<div class="modal" id="masitems" tabindex="-1" role="dialog"aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-
-				<div class="modal-header bg-primary">
-						<div class="col-1"></div>
-						<div class="col-10 modal-title text-center">
-							<h5 class="modal-title text-white font-weight-bold" id="exampleModalLabel">Crear Item</h5>
-						</div>
-						<div class="col-1">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-					</div>
-
-				<div class="modal-body">
-
-					<form method="POST">
-						<div class="form-row">
-							<div class="form-group col-md-4">
-								<label for="nombreaitem">Nombre del item:</label>
-								<input type="text" name="nombreaitem" class="form-control border border-primary" id="nombreaitem" value="Item #1">
-							</div>
-							<div class="form-group col-md-4">
-								<label for="encargado">Encargado:</label>
-								<select class="form-control border border-primary " name="encargado" id="encargado">
-									<option>...</option>
-									<option selected>Ali Mata</option>
-									<option>Miguel Angel Lugo</option>
-									<option>Angelymar Poyo</option>
-								</select>
-							</div>
-							<div class="form-group col-md-4">
-								<label for="fechaentrega">Fecha de entrega:</label>
-								<input type="text" class="form-control date js-datepicker" value="9999/99/99"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-							</div>
-						</div>
-
-						<div class="form-row">
-							<div class="form-group col-md-4">
-								<label for="nombreaitem">Nombre del item:</label>
-								<input type="text" name="nombreaitem" class="form-control border border-primary" id="nombreaitem">
-							</div>
-							<div class="form-group col-md-4">
-								<label for="encargado">Encargado:</label>
-								<select class="form-control border border-primary " name="encargado" id="encargado">
-									<option selected>...</option>
-									<option>Ali Mata</option>
-									<option>Miguel Angel Lugo</option>
-									<option>Angelymar Poyo</option>
-								</select>
-							</div>
-							<div class="form-group col-md-4">
-								<label for="fechaentrega">Fecha de entrega:</label>
-								<input type="text" class="form-control date js-datepicker"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-							</div>
-						</div>
-
-						<a href="#">
-							<div class="col-12 d-flex justify-content-center rounded-lg" style="background-color: #838383">
-								<img src="img/iconos/plus.png" width="30">
-							</div>
-						</a>
-					</form>
-
-				</div>
-
-				<div class="modal-footer d-flex justify-content-center">
-					<button type="button" class="btn btn-primary" data-dismiss="modal" data-target="principaluser.php">Aceptar</button>
-				</div>
-			</div>
-		</div>
-	</div>
-<!--.......................................................FIN MODAL MAS ITEMS..............................................................-->
 
 
 <!--.....................................................MENU PRINCIPAL............................................................-->
 	<!--.....................................................CHAT............................................................-->
-	<div class="modal" id="chatgeneral" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal" id="chatgeneral" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header bg-primary">

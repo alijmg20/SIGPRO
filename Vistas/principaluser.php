@@ -66,9 +66,6 @@ $mensaje = '';
 			    <a href="#chatgeneral" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/group.png" width="40" style="padding-right: 10px"> Chat</a>
 				
-				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
-					<img src="img/iconos/alarm.png" width="40" style="padding-right: 10px"> Alertas</a>
-				
 				<a href="#clientmsj" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/client.png" width="40" style="padding-right: 10px"> Cliente</a>
 				
@@ -121,9 +118,6 @@ $mensaje = '';
 							<a class="nav-link dropdown-toggle d-flex justify-content-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="img/iconos/user.png" width="30"> </a>
 
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#"> <img src="img/iconos/confblack.png" width="30" style="padding-right: 10px;"> Configuracion de perfil</a>
-								<a class="dropdown-item" href="#"> <img src="img/iconos/mail.png" width="30" style="padding-right: 10px;"> Invitaciones</a>
-								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="../Modelo/salir.inc.php"> <img src="img/iconos/logout.png" width="30" style="padding-right: 10px;"> Cerrar sesion</a>
 							</div>
 						</li>
@@ -134,11 +128,6 @@ $mensaje = '';
 									<a class="text-secondary" href="#chatgeneral" data-toggle="modal">
 										<img src="img/iconos/groupblack.png" width="30" style="padding-right: 10px">Chat</a>
 								</div>
-							</div>
-
-							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
-								<a class="text-secondary" href="#">
-									<img src="img/iconos/alarmblack.png" width="30" style="padding-right: 10px"> Alertas</a>
 							</div>
 
 							<div class="d-flex justify-content-center" style="padding-bottom: 10px">
@@ -533,12 +522,7 @@ $mensaje = '';
 		</div>
 	</div>
 	<!--...................................................FIN CHAT..........................................................-->
-
-
-	<!--.....................................................ALERTA............................................................-->
-	<!--...................................................FIN ALERTA..........................................................-->
-
-
+	
 	<!--.....................................................CLIENTE............................................................-->
 	<div class="modal" id="clientmsj" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog">
@@ -690,14 +674,6 @@ $mensaje = '';
 	</form>	
 	<!--FIN AÑADIR PARTICIPANTE-->
 	<!--...................................................FIN CONFIRGURACION..........................................................-->
-
-
-	<!--.....................................................INFORMACION............................................................-->
-	<!--...................................................FIN INFORMACION..........................................................-->
-
-
-	<!--.....................................................IR A PROYECTOS............................................................-->
-	<!--...................................................FIN IR A PROYECTOS..........................................................-->
 <!--...................................................FIN MENU PRINCIPAL..........................................................-->
 
 

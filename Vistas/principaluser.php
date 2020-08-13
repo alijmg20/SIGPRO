@@ -37,6 +37,7 @@ $proyecto = 0;
 include_once '../Modelo/mostrarContactos.inc.php';
 include_once '../Modelo/mostrar_actividad.inc.php';
 include_once '../Modelo/crear_actividad.inc.php';
+include_once '../Modelo/enviarMensajeCliente.inc.php';
 $mensaje = '';
 
 

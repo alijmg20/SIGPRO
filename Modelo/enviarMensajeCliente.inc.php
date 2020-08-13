@@ -12,10 +12,8 @@
          $consulta->execute();
         $resultados = $consulta->fetch(PDO::FETCH_ASSOC);
         $correo_cliente = $resultados['email'];
-        $header = "From: sigproIngenieria@example.com"."\r\n";
-        $header .= "Reply-To: sigproIngenieria@example.com"."\r\n";
-        $header.= "X-Mailer: PHP/".phpversion();
-        $mail = @mail($correo_cliente,$asunto,$mensaje,$header);
+        $header = "Enviado desde Sigpro ";
+        $mail = mail($correo_cliente,$asunto,$mensaje,$header);
         if($mail){
             echo "Enviadoooo";
         }

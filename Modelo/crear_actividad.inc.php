@@ -14,14 +14,14 @@ include_once '../Controlador/conexion.inc.php';
 if (isset($_POST['guardar'])) {                                     // name del boton que esta en principaluser.php linea 251
 
     $id_proyecto = $_GET['id'];                                       // para obtener de la URL el id. 
-    $lider = $_POST["lider_actividad"];                               // lider de actividad
     $nombre_actividad = $_POST['nombreactividad'];                    // nombre
     $descripcion_actividad = $_POST['descripcion'];                   // descripcion
     $termino_actividad = $_POST["poncentajeactividad"];               // termino de actividad                                                                   
-    if (!empty($_POST['fechafin'])) {
+    if (!empty($_POST['fechafin']) && !empty($_POST["lider_actividad"])) {
         $fecha_final_actividad = $_POST['fechafin'];                    // fecha entrega
         list($ano, $mes, $dia) = explode('/', $fecha_final_actividad);
         $fecha_definitiva = $ano . '-' . $mes . '-' . $dia . ' 00:00:00';
+        $lider = $_POST["lider_actividad"];                             // lider de actividad
     }
 
     // probar que se este guardando todos los datos de forma correcta 

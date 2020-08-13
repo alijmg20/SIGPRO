@@ -9,7 +9,7 @@
         INNER JOIN cliente 
         ON cliente.id=proyecto.id_cliente WHERE proyecto.id ='.$id;
         $consulta = $conexion->prepare($sql);
-        $resultado = $consulta->execute();
+        $resultados = $consulta->execute();
         $resultados = $consulta->fetch(PDO::FETCH_ASSOC);
         $correo_cliente_enviar = $resultados['email'];
         $header = "From: sigproIngenieria@gmail.com". "\r\n";
@@ -17,7 +17,7 @@
         $header.="X-Mailer: PHP/".phpversion();
         $mail = @mail($correo_cliente_enviar,$asunto,$mensaje_correo,$header);
         if($mail){
-            echo "CORREO ENVIADOOOOO";
+            echo "enviadooooooooooo";
         }
     }
 

@@ -70,7 +70,6 @@ $mensaje = '';
 <body>
 	<!--Wrapper-->
 	<div class="d-flex" id="wrapper">
-
 		<!-- Sidebar -->
 		<div class="bg-primary border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">

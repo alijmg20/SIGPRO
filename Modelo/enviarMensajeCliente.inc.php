@@ -15,7 +15,7 @@
         $header = "From: sigpro@mail.com "."\r\n";
         $header .="Reply-To: sigpro@mail.com "."\r\n";
         $header .="X-Mailer: PHP/".phpversion();
-        $mail = @mail($correo_cliente,$asunto,$mensaje,$header);
+        $mail = mail($correo_cliente,$asunto,$mensaje,$header);
         if($mail){
             echo "Enviadoooo";
         }

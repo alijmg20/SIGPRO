@@ -11,7 +11,7 @@
         $consulta = $conexion->prepare($sql);
         $resultado = $consulta->execute();
         $resultados = $consulta->fetch(PDO::FETCH_ASSOC);
-        $correo_cliente = $resultado['correo'];
+        $correo_cliente = $resultado['email'];
         $header = "From: sigproIngenieria@gmail.com". "\r\n";
         $header.="Reply-To: sigproIngenieria@gmail.com"."\r\n";
         $header.="X-Mailer: PHP/".phpversion();

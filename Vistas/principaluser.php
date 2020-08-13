@@ -505,7 +505,7 @@ $mensaje = '';
 					</form>
 				</div>
 				<div class="modal-footer d-flex justify-content-center">
-					<button data-dismiss="modal" type="button" class="btn btn-primary" disabled="">Enviar</button>
+					<button data-dismiss="modal" type="button" class="btn btn-primary" >Enviar</button>
 				</div>
 			</div>
 		</div>

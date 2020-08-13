@@ -49,7 +49,15 @@ $mensaje = '';
 <html>
 
 <head>
+<?php
+if(!empty($asunto)&& !empty($mensaje)&& !empty($correo_cliente)){
+	echo $asunto;
+	echo $mensaje;
+	echo $correo_cliente;
+}
 
+
+?>
 	<meta charset="utf-8">
 	<title>SIGPRO</title>
 	<!--Titulo de pestanha-->

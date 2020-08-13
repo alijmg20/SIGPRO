@@ -11,6 +11,7 @@ session_start();
 
 include_once '../Controlador/conexion.inc.php';
 
+
 //CON ESTE IF SE CONSIGUE TODA LA INFORMACION DEL CLIENTE EN LA BASE DE DATOS
 if (isset($_SESSION['id_usuario'])) {
 	$consulta = $conexion->prepare('SELECT * FROM usuarios WHERE id =:id');
@@ -36,8 +37,9 @@ include_once '../Modelo/crear_proyecto.inc.php';
 include_once '../Modelo/agregar_participante.inc.php';
 
 include_once '../Modelo/mostrarContactos.inc.php';
-include_once '../Modelo/mostrarProyectos.inc.php';
 
+include_once '../Modelo/mostrarProyectos.inc.php';
+include_once '../Modelo/buscar_proyecto.inc.php';
 
 $mensaje = '';
 $cliente = '';
@@ -152,15 +154,15 @@ $proyecto = 0;
 
 			<div id="page-content-wrapper" class="bg-light d-flex justify-content-center">
 				<div class="barrabusqueda">
-					<form>
+					<form method="POST">
 						<div class="form-row d-flex justify-content-center">
 							<div class="col-11">
-								<input class="form-control form-control-sm" type="text" placeholder="Buscar proyecto">
+								<input class="form-control form-control-sm" type="search" name="buscar" placeholder="Buscar proyecto">
 							</div>
 							<div class="col-1">
-								<a href="#">
+								<button type="submit" class="border-0" name="btn_buscar" >
 									<img src="img/iconos/lupa.png" class="rounded" style="margin-left: -10px;">
-								</a>
+									</button>
 							</div>
 						</div>
 					</form>

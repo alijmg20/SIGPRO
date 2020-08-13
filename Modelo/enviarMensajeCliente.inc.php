@@ -3,7 +3,7 @@
 
     if(isset($_POST['boton_enviar_mensaje_cliente'])){
         $asunto = $_POST['asuntomsj'];
-        $mensaje = $_POST['msjalcliente'];
+        $mensaje_correo = $_POST['msjalcliente'];
 
         $sql = 'SELECT * FROM proyecto 
         INNER JOIN cliente 
@@ -11,11 +11,11 @@
         $consulta = $conexion->prepare($sql);
         $resultado = $consulta->execute();
         $resultados = $consulta->fetch(PDO::FETCH_ASSOC);
-        $correo_cliente = $resultado['email'];
+        $correo_cliente_enviar = $resultados['email'];
         $header = "From: sigproIngenieria@gmail.com". "\r\n";
         $header.="Reply-To: sigproIngenieria@gmail.com"."\r\n";
         $header.="X-Mailer: PHP/".phpversion();
-        $mail = @mail($correo_cliente,$asunto,$mensaje,$header);
+        $mail = @mail($correo_cliente_enviar,$asunto,$mensaje_correo,$header);
         if($mail){
             echo "CORREO ENVIADOOOOO";
         }

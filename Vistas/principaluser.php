@@ -68,7 +68,6 @@ $mensaje = '';
 </head>
 
 <body>
-
 	<!--Wrapper-->
 	<div class="d-flex" id="wrapper">
 

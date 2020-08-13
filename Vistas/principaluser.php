@@ -35,6 +35,7 @@ if (isset($_GET['id'])) {
 $mensaje = '';
 $proyecto = 0;
 include_once '../Modelo/mostrarContactos.inc.php';
+include_once '../Modelo/mostrar_actividad.inc.php';
 include_once '../Modelo/crear_actividad.inc.php';
 $mensaje = '';
 
@@ -238,33 +239,23 @@ $mensaje = '';
 					<?php
 					// tomo bbd actividades y las muestro
 					// mostrar actividades
-					$sql = "SELECT * FROM actividades WHERE id_proyecto=$id";
-					$resultado = $conexion->prepare($sql);
-					$resultado->execute(array("Actividades"));
-					$consulta = $resultado->fetch(PDO::FETCH_ASSOC);
-					$idlider = $consulta['id_usuario'];
-					// Toma de lideres 
-					// echo $idlider;
-					$sqlider = "SELECT nombre_completo FROM usuarios WHERE id=$idlider";
-					$lider_result = $conexion->prepare($sqlider);
-					$lider_result->execute(array("Lideres"));
-					$namelider = $lider_result->fetch(PDO::FETCH_ASSOC);
-
-					while ($aux = $resultado->fetch(PDO::FETCH_ASSOC)) { ?>
+					if(!empty($actividades)){
+					foreach($actividades as $aux): ?>
 						<tr>
-
 							<td>
 								<a data-toggle="modal" href="#crearitem" class="text-dark">
 									<?php echo $aux['nombre']; ?>
 								</a>
 							</td>
 							<td><?php echo $aux['descripcion']; ?></td>
-							<td><?php echo $namelider['nombre_completo']; ?></td>
+							<td><?php echo $aux['nombre_completo']; ?></td>
 							<td><?php echo $aux['terminado']; ?></td>
 							<td><?php echo $aux['fecha_inicio']; ?></td>
 							<td><?php echo $aux['fecha_final']; ?></td>
 						</tr>
-					<?php } ?>
+					<?php 
+					endforeach;
+				} ?>
 				</tbody>
 			</table>
 
@@ -468,7 +459,7 @@ $mensaje = '';
 											<div class="type_msg">
 												<div class="input_msg_write">
 													<input type="text" id="mensaje_chat" name="mensaje_chat" class="write_msg" placeholder="Escribir mensaje" />
-													<button class="msg_send_btn" type="submit">
+													<button class="msg_send_btn border-0"  type="submit">
 														<img src="img/iconos/sendsuccess.png" id="enviarchat">
 													</button>
 												</div>

@@ -9,7 +9,7 @@ if (isset($_POST["boton_agregar_contacto"])) {
 
         $mensaje = 'before_cliente';
         
-    }else if(!filter_var($correo_registro,FILTER_VALIDATE_EMAIL)){
+    }else if(!filter_var($correo_usuario,FILTER_VALIDATE_EMAIL)){
         $mensaje = 'bad_email';
         return;
     } else if (!empty($correo_usuario)) {

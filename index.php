@@ -67,7 +67,7 @@ include_once 'Modelo/agregar_usuario.inc.php';
 		<div class="container text-center">
 			<div class="alert alert-danger" role="alert">
 				<button class="close" data-dismiss="alert"><span>&times;</span></button>
-				Las contraseñas no coinciden
+				Las contraseñas deben ser mayor de 7 caracteres e iguales
 			</div>
 		</div>
 	<?php

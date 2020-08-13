@@ -19,7 +19,8 @@ if (isset($_POST['registro'])) {
     $correo_registro  = $_POST['correo_registro'];
     $password_registro = $_POST['password_registro'];
     $password_confirmacion = $_POST['password_confirmacion'];
-
+    $longitud_password = strlen($password_registro);
+    $longitud_password_confirmacion = strlen($password_confirmacion);
 
     if (!empty($nombre_completo) && !empty($correo_registro) && !empty($password_registro) && !empty($password_confirmacion)) {
         if (buscarRepetidos($correo_registro, $conexion) ==1 ) {
@@ -28,7 +29,7 @@ if (isset($_POST['registro'])) {
             $mensaje = 'bad_email';
             return;
         } else {
-            if ($password_confirmacion === $password_registro ) {
+            if ($password_confirmacion === $password_registro && $longitud_password > 7 &&  $longitud_password_confirmacion > 7  ) {
 
                 $sql = 'INSERT INTO usuarios(nombre_completo,correo,clave) VALUES (:nombre_completo,:correo,:clave)';
                 $consulta = $conexion->prepare($sql);

@@ -80,7 +80,7 @@ $mensaje = '';
 
 				<a href="#chatgeneral" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/group.png" width="40" style="padding-right: 10px"> Chat</a>
-				
+
 				<a href="#clientmsj" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/client.png" width="40" style="padding-right: 10px"> Cliente</a>
 
@@ -186,12 +186,12 @@ $mensaje = '';
 
 				<p class="etiquetainfo">Tiempo restante</p>
 				<p class="infoetiqueta">
-					<?php $fecha_inicio = new DateTime($name['fecha_inicio']) ;
-						  $fecha_final = new DateTime($name['fecha_final']);
-						  $diff = $fecha_inicio->diff($fecha_final);
-						  echo $diff->days." dias";
+					<?php $fecha_inicio = new DateTime($name['fecha_inicio']);
+					$fecha_final = new DateTime($name['fecha_final']);
+					$diff = $fecha_inicio->diff($fecha_final);
+					echo $diff->days . " dias";
 					?>
-					
+
 				</p>
 
 				<p class="etiquetainfo">Porcentaje completado</p>
@@ -239,23 +239,23 @@ $mensaje = '';
 					<?php
 					// tomo bbd actividades y las muestro
 					// mostrar actividades
-					if(!empty($actividades)){
-					foreach($actividades as $aux): ?>
-						<tr>
-							<td>
-								<a data-toggle="modal" href="#crearitem" class="text-dark">
-									<?php echo $aux['nombre']; ?>
-								</a>
-							</td>
-							<td><?php echo $aux['descripcion']; ?></td>
-							<td><?php echo $aux['nombre_completo']; ?></td>
-							<td><?php echo $aux['terminado']; ?></td>
-							<td><?php echo $aux['fecha_inicio']; ?></td>
-							<td><?php echo $aux['fecha_final']; ?></td>
-						</tr>
-					<?php 
-					endforeach;
-				} ?>
+					if (!empty($actividades)) {
+						foreach ($actividades as $aux) : ?>
+							<tr>
+								<td>
+									<a data-toggle="modal" href="#crearitem" class="text-dark">
+										<?php echo $aux['nombre']; ?>
+									</a>
+								</td>
+								<td><?php echo $aux['descripcion']; ?></td>
+								<td><?php echo $aux['nombre_completo']; ?></td>
+								<td><?php echo $aux['terminado']; ?></td>
+								<td><?php echo $aux['fecha_inicio']; ?></td>
+								<td><?php echo $aux['fecha_final']; ?></td>
+							</tr>
+					<?php
+						endforeach;
+					} ?>
 				</tbody>
 			</table>
 
@@ -434,7 +434,7 @@ $mensaje = '';
 
 	<!--.....................................................MENU PRINCIPAL............................................................-->
 	<!--.....................................................CHAT............................................................-->
-	<form method="POST" onsubmit="return enviarChat();" >
+	<form method="POST" onsubmit="return enviarChat();">
 		<div class="modal" id="chatgeneral" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
@@ -454,12 +454,12 @@ $mensaje = '';
 							<div class="messaging">
 								<div class="inbox_msg">
 									<div class="mesgs">
-										<div class="msg_history"  >
- 												<div id="respa"></div>
+										<div class="msg_history">
+											<div id="respa"></div>
 											<div class="type_msg">
 												<div class="input_msg_write">
 													<input type="text" id="mensaje_chat" name="mensaje_chat" class="write_msg" placeholder="Escribir mensaje" />
-													<button class="msg_send_btn border-0"  type="submit">
+													<button class="msg_send_btn border-0" type="submit">
 														<img src="img/iconos/sendsuccess.png" id="enviarchat">
 													</button>
 												</div>
@@ -480,36 +480,39 @@ $mensaje = '';
 		</div>
 	</form>
 	<!--...................................................FIN CHAT..........................................................-->
-	
+
 	<!--.....................................................CLIENTE............................................................-->
-	<div class="modal" id="clientmsj" tabindex="-1" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header bg-primary">
-					<div class="col-1"></div>
-					<div class="col-10 modal-title text-center">
-						<h5 class="modal-title text-white font-weight-bold" id="myLargeModalLabel">Mensajeria al cliente</h5>
-					</div>
-					<div class="col-1">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-				</div>
-				<div class="modal-body">
-					<form method="POST">
-						<div class="form-group">
-							<label for="msjalcliente">Escribir mensaje</label>
-							<textarea class="form-control" id="msjalcliente" name="msjalcliente" rows="3"></textarea>
+	<form method="POST">
+		<div class="modal" id="clientmsj" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<div class="col-1"></div>
+						<div class="col-10 modal-title text-center">
+							<h5 class="modal-title text-white font-weight-bold" id="myLargeModalLabel">Mensajeria al cliente</h5>
 						</div>
-					</form>
-				</div>
-				<div class="modal-footer d-flex justify-content-center">
-					<button data-dismiss="modal" type="button" class="btn btn-primary" >Enviar</button>
+						<div class="col-1">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+					<div class="modal-body">
+					<div class="form-group">
+							<input type="text" class="form-control" id="" name="asuntomsj" rows="3" placeholder="asunto" />
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" id="msjalcliente" name="msjalcliente" rows="3" placeholder="Escribir Mensaje"></textarea>
+						</div>
+							
+					</div>
+					<div class="modal-footer d-flex justify-content-center">
+						<button  type="submit" name="boton_enviar_mensaje_cliente" class="btn btn-primary">Enviar</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 	<!--...................................................FIN CLIENTE..........................................................-->
 
 
@@ -646,8 +649,8 @@ $mensaje = '';
 	<!--mensaje de que funciona la variable usuario PARA DEBUGIN-->
 
 	<!--<h1>Welcome <?php echo $usuario['nombre_completo'] ?></h1>-->
-	<?php 
-	
+	<?php
+
 	?>
 
 	<script>
@@ -655,9 +658,9 @@ $mensaje = '';
 
 		function enviarChat() {
 			var mensaje_chat = document.getElementById("mensaje_chat").value;
-			
 
-			var datosEnviados ='mensaje_chat=' + mensaje_chat+'&idproyecto='+<?php echo $id ?>+'&id_usuario='+<?php echo $id_usuario ?> ;
+
+			var datosEnviados = 'mensaje_chat=' + mensaje_chat + '&idproyecto=' + <?php echo $id ?> + '&id_usuario=' + <?php echo $id_usuario ?>;
 
 			$.ajax({
 				type: 'POST',
@@ -670,7 +673,6 @@ $mensaje = '';
 			return false;
 
 		}
-		
 	</script>
 
 

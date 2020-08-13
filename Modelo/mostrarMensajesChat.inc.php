@@ -2,10 +2,10 @@
 
 include_once '../Controlador/conexion.inc.php';
 
+
+if(isset($_POST['mensaje_chat'])){
 $id= $_POST['idproyecto'];
 $usuario = $_POST['id_usuario'];
-if(isset($_POST['mensaje_chat'])){
-
     $mensaje = $_POST['mensaje_chat'];
     $sql = 'INSERT INTO chat (mensaje,id_usuario,id_proyecto) VALUES (:mensaje,:id_usuario,:id_proyecto)';
     $consulta = $conexion->prepare($sql);

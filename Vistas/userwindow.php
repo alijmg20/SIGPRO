@@ -202,7 +202,7 @@ $proyecto = 0;
 			?>
 
 					<div class="cajanueva">
-						<a class="text-white" href="principaluser.php?id=<?php echo $fila['id']  ?>">
+						<a class="text-white" href="principaluser.php?id=<?php echo $fila['id']?>&usuario=<?php echo $usuario['id'] ?>">
 							<div style="padding-bottom: 150px; background: #<?php echo $Rand ?>"></div>
 							<p class="d-flex justify-content-center" style="margin: 3px">
 								<?php echo $fila['nombre'] ?>
@@ -559,28 +559,6 @@ $proyecto = 0;
 	</div>
 
 
-	<script>
-		/*
-			//Funcion para evitar recargar la pagina
-
-		function enviarCliente(){
-			var nombre_cliente = document.getElementById("nombre_cliente").value;
-			var correo_cliente = document.getElementById("correo_cliente").value;
-
-			var datosEnviados = 'nombre_cliente='+nombre_cliente+'&correo_cliente='+correo_cliente;
-
-			$.ajax({
-				type:'POST',
-				url:'../Modelo/agregar_cliente.inc.php',
-				data:datosEnviados,
-				success:function(resp){
-					$("#respa").html(resp)
-				}
-			});
-			return false;
-			
-		}*/
-	</script>
 
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>

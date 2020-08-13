@@ -20,12 +20,25 @@ if (isset($_SESSION['id_usuario'])) {
 
 	$usuario = $resultado;
 }
+if (isset($_GET['id'])) {
+
+	$id = $_GET['id'];
+	$id_usuario = $_GET['usuario'];
+	$sql = "SELECT * FROM proyecto WHERE id=$id ";
+	$result = $conexion->prepare($sql);
+	$result->execute(array("NameProyect"));
+	$name = $result->fetch(PDO::FETCH_ASSOC);
+}
+
+
 
 $mensaje = '';
 $proyecto = 0;
-include_once '../Modelo/mostrarContactos.inc.php'; 
+include_once '../Modelo/mostrarContactos.inc.php';
 include_once '../Modelo/crear_actividad.inc.php';
 $mensaje = '';
+
+
 
 
 ?>
@@ -43,9 +56,10 @@ $mensaje = '';
 	<meta name="viewport" content="width=divice-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimun-scale=1.0">
 	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="css/estilos.css">
 	<link href="css/simple-sidebar.css" rel="stylesheet">
-	<!--DatePicker-->	
+	<!--DatePicker-->
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<!-- <META HTTP-EQUIV="REFRESH" CONTENT="2"> -->
 
@@ -63,24 +77,24 @@ $mensaje = '';
 			</div>
 			<div class="list-group list-group-flush">
 
-			    <a href="#chatgeneral" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
+				<a href="#chatgeneral" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/group.png" width="40" style="padding-right: 10px"> Chat</a>
-				
+
 				<a href="#" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/alarm.png" width="40" style="padding-right: 10px"> Alertas</a>
-				
+
 				<a href="#clientmsj" data-toggle="modal" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/client.png" width="40" style="padding-right: 10px"> Cliente</a>
-				
+
 				<a href="#configuracion" class="list-group-item list-group-item-action bg-primary text-white" data-toggle="modal" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/conf.png" width="40" style="padding-right: 10px"> Configuracion</a>
-				
+
 				<a href="#continfo" data-toggle="collapse" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/info.png" width="40" style="padding-right: 10px"> Informacion</a>
-				
+
 				<a href="userwindow.php" class="list-group-item list-group-item-action bg-primary text-white" style="padding-top: 20px; padding-bottom: 20px">
 					<img src="img/iconos/back.png" width="40" style="padding-right: 10px"> Ir a proyectos</a>
-		
+
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->
@@ -97,15 +111,9 @@ $mensaje = '';
 				<div style="padding-top: 10px">
 					<!--1 Nombre proyecto -->
 					<h5>
-						<?php if(isset($_GET['id'])){ 
-								
-								$id = $_GET['id'];
-								$sql="SELECT * FROM proyecto WHERE id=$id ";
-								$result=$conexion->prepare($sql);
-								$result->execute(array("NameProyect"));
-								$name = $result->fetch(PDO::FETCH_ASSOC);
-								echo $name['nombre'];
-							}						?>
+						<?php
+						echo $name['nombre'];
+						?>
 					</h5>
 				</div>
 
@@ -165,11 +173,11 @@ $mensaje = '';
 					</ul>
 				</div>
 			</nav>
-			<!-- /#page-content-wrapper -->		
+			<!-- /#page-content-wrapper -->
 
 			<!--Main Content-->
-			
-<!--.................................................INFORMACION......................................................-->
+
+			<!--.................................................INFORMACION......................................................-->
 			<div class="contenerdorinfo collapse" id="continfo">
 
 				<div class="d-flex justify-content-end" style="margin-right: 5px; margin-top: 5px;">
@@ -182,7 +190,7 @@ $mensaje = '';
 
 				<p class="etiquetainfo" style="margin-top: 20px">Fecha de inicio</p>
 				<p class="infoetiqueta">2020/07/17</p>
-				
+
 				<p class="etiquetainfo">Fecha de entrega</p>
 				<p class="infoetiqueta">2020/08/12</p>
 
@@ -197,7 +205,7 @@ $mensaje = '';
 					<p class="text-break">Haciendo milagos aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas</p>
 				</div>
 			</div>
-<!--...............................................FIN INFORMACION....................................................-->
+			<!--...............................................FIN INFORMACION....................................................-->
 
 			<div style="margin: 20px 20px 20px 20px;">
 				<a href="#crearactividad" data-toggle="modal">Crear actividad</a>
@@ -210,17 +218,17 @@ $mensaje = '';
 					</a>
 				</div>
 			</div>
-			
-			
+
+
 			<div style="margin: 20px 20px 20px 20px;">
 				<a href="#crearactividad" data-toggle="modal">Crear actividad</a>
 			</div>
 
 			<!--2 Contenido de actividades  -->
-				<table class="table table-bordered">
-					<thead>
+			<table class="table table-bordered">
+				<thead>
 					<tr>
-						
+
 						<th>Nombre</th>
 						<th>Descripcion</th>
 						<th>Lider</th>
@@ -228,30 +236,30 @@ $mensaje = '';
 						<th>Fecha de inicio</th>
 						<th>Fecha de cierre</th>
 					</tr>
-					</thead>
-					<tbody>
+				</thead>
+				<tbody>
 
 					<?php
 					// tomo bbd actividades y las muestro
 					// mostrar actividades
-						$sql="SELECT * FROM actividades WHERE id_proyecto=$id";
-						$resultado=$conexion->prepare($sql);
-						$resultado->execute(array("Actividades"));
-						$consulta = $resultado->fetch(PDO::FETCH_ASSOC);
-						$idlider =$consulta['id_usuario']; 
-						// Toma de lideres 
-						// echo $idlider;
-						$sqlider="SELECT nombre_completo FROM usuarios WHERE id=$idlider";
-						$lider_result=$conexion->prepare($sqlider);
-						$lider_result->execute(array("Lideres"));
-						$namelider = $lider_result->fetch(PDO::FETCH_ASSOC);
-						
-						while($aux = $resultado->fetch(PDO::FETCH_ASSOC)) { ?>
+					$sql = "SELECT * FROM actividades WHERE id_proyecto=$id";
+					$resultado = $conexion->prepare($sql);
+					$resultado->execute(array("Actividades"));
+					$consulta = $resultado->fetch(PDO::FETCH_ASSOC);
+					$idlider = $consulta['id_usuario'];
+					// Toma de lideres 
+					// echo $idlider;
+					$sqlider = "SELECT nombre_completo FROM usuarios WHERE id=$idlider";
+					$lider_result = $conexion->prepare($sqlider);
+					$lider_result->execute(array("Lideres"));
+					$namelider = $lider_result->fetch(PDO::FETCH_ASSOC);
+
+					while ($aux = $resultado->fetch(PDO::FETCH_ASSOC)) { ?>
 						<tr>
-							
+
 							<td>
 								<a data-toggle="modal" href="#crearitem" class="text-dark">
-								<?php echo $aux['nombre']; ?>
+									<?php echo $aux['nombre']; ?>
 								</a>
 							</td>
 							<td><?php echo $aux['descripcion']; ?></td>
@@ -260,10 +268,10 @@ $mensaje = '';
 							<td><?php echo $aux['fecha_inicio']; ?></td>
 							<td><?php echo $aux['fecha_final']; ?></td>
 						</tr>
-						<?php } ?>
-							</tbody>
-				</table>
-		
+					<?php } ?>
+				</tbody>
+			</table>
+
 
 
 
@@ -271,16 +279,17 @@ $mensaje = '';
 			<!--Main content END-->
 		</div>
 	</div>
+
 	<!-- /#wrapper -->
 
-<!--.................................................MODAL DE CREAR ACTIVIDAD......................................................-->
-<form method="POST">
-    <div class="modal fade" id="crearactividad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-		
-			<div class="modal-content">
-            
-				<div class="modal-header bg-primary">
+	<!--.................................................MODAL DE CREAR ACTIVIDAD......................................................-->
+	<form method="POST">
+		<div class="modal fade" id="crearactividad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+
+					<div class="modal-header bg-primary">
 						<div class="col-1"></div>
 						<div class="col-10 modal-title text-center">
 							<h5 class="modal-title text-white font-weight-bold" id="exampleModalLabel">Crear actividad</h5>
@@ -292,9 +301,9 @@ $mensaje = '';
 						</div>
 					</div>
 
-				<div class="modal-body">
+					<div class="modal-body">
 
-					
+
 						<div class="form-group row">
 							<label for="nombreactividad" class="col-sm-6 col-form-label">Nombre de la actividad:</label>
 							<div class="col-sm-6">
@@ -325,8 +334,8 @@ $mensaje = '';
 
 						<div class="form-group">
 							<label for="lideractividad" class="d-flex justify-content-center">Lider de la actividad:</label>
-							<select multiple class="form-control" name ="lider_actividad[]" id="lideractividad" name="lideractividad">
-							<?php
+							<select multiple class="form-control" name="lider_actividad[]" id="lideractividad" name="lideractividad">
+								<?php
 								if (!empty($contactoVistaUsuario)) {
 									foreach ($contactoVistaUsuario as $fila) :
 								?>
@@ -342,56 +351,56 @@ $mensaje = '';
 							</select>
 						</div>
 
-					
+
+
+					</div>
+
+					<div class="modal-footer d-flex justify-content-center">
+						<button type="submit" name="guardar" class="btn btn-primary" data-target="#">Aceptar</button>
+					</div>
 
 				</div>
-
-				<div class="modal-footer d-flex justify-content-center">
-					<button type="submit" name = "guardar" class="btn btn-primary" data-target="#">Aceptar</button>
-				</div>
-				
 			</div>
 		</div>
-	</div>
-</form>
-<!--...............................................FIN MODAL DE CREAR ACTIVIDAD....................................................-->
+	</form>
+	<!--...............................................FIN MODAL DE CREAR ACTIVIDAD....................................................-->
 
 
-<!--.........................................................MODAL CREAR ITEM................................................................-->
+	<!--.........................................................MODAL CREAR ITEM................................................................-->
 	<div class="modal" id="crearitem" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header bg-primary">
-						<div class="col-1"></div>
-						<div class="col-10 modal-title text-center">
-							<h5 class="modal-title text-white font-weight-bold" id="exampleModalLabel">Crear Item</h5>
-						</div>
-						<div class="col-1">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
+					<div class="col-1"></div>
+					<div class="col-10 modal-title text-center">
+						<h5 class="modal-title text-white font-weight-bold" id="exampleModalLabel">Crear Item</h5>
 					</div>
+					<div class="col-1">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
 
 
-				<form action="../Modelo/agregar_actividades_item.php"  method="POST">
+				<form action="../Modelo/agregar_actividades_item.php" method="POST">
 					<div class="modal-body">
 						<div class="form-row">
 							<!-- ================================================== -->
 							<div class="form-group col-md-4">
 								<label for="nombreaitem">Nombre del item:</label>
-								<input type="text" name="nombreaitem" class="form-control border border-primary" id="nombreaitem" placeholder="Nombre" >
+								<input type="text" name="nombreaitem" class="form-control border border-primary" id="nombreaitem" placeholder="Nombre">
 							</div>
 
 
 
 
 
-						<!-- mando la url a agregar_actividades_item.php para poder regresarme -->
-								<!-- <?echo $url = "http://".$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+							<!-- mando la url a agregar_actividades_item.php para poder regresarme -->
+							<!-- <?echo $url = "http://".$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 																echo $url;
 								?>
-							<input type="hidden" name="url" value="<?php echo $url = "http://".$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];?>" /> -->
+							<input type="hidden" name="url" value="<?php echo $url = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]; ?>" /> -->
 
 
 
@@ -414,15 +423,15 @@ $mensaje = '';
 								<input type="text" name="fechaEntrega" class="form-control date js-datepicker"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 							</div>
 						</div>
-							<!-- Mas items================================================== -->
-							<a href="#masitems"  data-dismiss="modal" data-toggle="modal">
-								<div class="col-12 d-flex justify-content-center rounded-lg" style="background-color: #838383">
+						<!-- Mas items================================================== -->
+						<a href="#masitems" data-dismiss="modal" data-toggle="modal">
+							<div class="col-12 d-flex justify-content-center rounded-lg" style="background-color: #838383">
 								<img src="img/iconos/plus.png" width="30">
-								</div>
-							</a>
+							</div>
+						</a>
 						<div class="modal-footer d-flex justify-content-center">
-								<button type="submit" name="add_item" class="btn btn-primary" data-toggle="modal">Aceptar</button>
-								<!-- <button type="submit" name="add_item" class="btn btn-primary" data-dismiss="modal" data-target="principaluser.php" data-toggle="modal">Aceptar</button> -->
+							<button type="submit" name="add_item" class="btn btn-primary" data-toggle="modal">Aceptar</button>
+							<!-- <button type="submit" name="add_item" class="btn btn-primary" data-dismiss="modal" data-target="principaluser.php" data-toggle="modal">Aceptar</button> -->
 						</div>
 					</div>
 				</form>
@@ -431,107 +440,58 @@ $mensaje = '';
 			</div>
 		</div>
 	</div>
-<!--.......................................................FIN MODAL CREAR ITEM..............................................................-->
+	<!--.......................................................FIN MODAL CREAR ITEM..............................................................-->
 
 
 
 
-<!--.....................................................MENU PRINCIPAL............................................................-->
+	<!--.....................................................MENU PRINCIPAL............................................................-->
 	<!--.....................................................CHAT............................................................-->
+	<form method="POST" onsubmit="return enviarChat();" >
 		<div class="modal" id="chatgeneral" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header bg-primary">
-					<div class="col-1"></div>
-					<div class="col-10 modal-title text-center">
-						<h5 class="modal-title text-white font-weight-bold" id="myLargeModalLabel">Chat</h5>
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<div class="col-1"></div>
+						<div class="col-10 modal-title text-center">
+							<h5 class="modal-title text-white font-weight-bold" id="myLargeModalLabel">Chat</h5>
+						</div>
+						<div class="col-1">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
 					</div>
-					<div class="col-1">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-				</div>
-				<div class="modal-body">
-					<div class="container">
-						<div class="messaging">
-							<div class="inbox_msg">
-								<div class="mesgs">
-									<div class="msg_history">
-
-										<div class="incoming_msg">
-											<div class="received_msg">
-												<div class="received_withd_msg">
-													<div class="textchat">
-														<strong class="primary-font">Miguelucho</strong>
-														<p>Auccilio mi bida ez hun desastre</p>
-													</div>
-													<span class="time_date"> 11:01 AM    |    Agosto 3</span>
+					<div class="modal-body">
+						<div class="container">
+							<div class="messaging">
+								<div class="inbox_msg">
+									<div class="mesgs">
+										<div class="msg_history"  >
+ 												<div id="respa"></div>
+											<div class="type_msg">
+												<div class="input_msg_write">
+													<input type="text" id="mensaje_chat" name="mensaje_chat" class="write_msg" placeholder="Escribir mensaje" />
+													<button class="msg_send_btn" type="submit">
+														<img src="img/iconos/sendsuccess.png" id="enviarchat">
+													</button>
 												</div>
 											</div>
-										</div>
 
-										<div class="outgoing_msg">
-											<div class="sent_msg">
-												<p>Que triste</p>
-												<span class="time_date"> 11:01 AM    |    Agosto 3</span> 
-											</div>
-										</div>
-
-										<div class="incoming_msg">
-											<div class="received_msg">
-												<div class="received_withd_msg">
-													<div class="textchat">
-														<strong class="primary-font">Aliño</strong>
-														<p>Miguelucho tu eres fuerte, vamos que tu puedes</p>
-													</div>
-													<span class="time_date"> 11:01 AM    |    Ayer</span>
-												</div>
-											</div>
-										</div>
-
-										<div class="outgoing_msg">
-											<div class="sent_msg">
-												<p>Amor fraternal</p>
-												<span class="time_date"> 11:01 AM    |    Hoy</span> 
-											</div>
-										</div>
-
-										<div class="incoming_msg">
-											<div class="received_msg">
-												<div class="received_withd_msg">
-													<div class="textchat">
-														<strong class="primary-font">Miguelucho</strong>
-														<p>Con esta amiga que me gasto quien necesita enemigos. Aliño eres lo maximo te quiero, eres un buen amigo</p>
-													</div>
-													<span class="time_date"> 11:01 AM    |    Hoy</span>
-												</div>
-											</div>
-										</div>
-
-									</div>
-
-									<div class="type_msg">
-										<div class="input_msg_write">
-											<input type="text" class="write_msg" placeholder="Escribir mensaje" />
-											<button class="msg_send_btn" type="button">
-												<img src="img/iconos/sendsuccess.png" id="enviarchat">
-											</button>
 										</div>
 									</div>
-
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
 
-				<div class="modal-footer d-flex justify-content-center">
-					<button data-dismiss="modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#principaluser.php">Aceptar</button>
+						<div class="modal-footer d-flex justify-content-center">
+							<button data-dismiss="modal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#principaluser.php">Aceptar</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 	<!--...................................................FIN CHAT..........................................................-->
 
 
@@ -593,7 +553,7 @@ $mensaje = '';
 									<div class="col-6">
 										<input type="text" name="nombre_proyecto" class="form-control" placeholder="Proyecto">
 									</div>
-								</div>									
+								</div>
 							</div>
 							<!--DATEPICKER-->
 							<div class="form-group">
@@ -604,7 +564,7 @@ $mensaje = '';
 									<div class="col-6 input-group date js-datepicker">
 										<input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 									</div>
-								</div>									
+								</div>
 							</div>
 							<div class="form-group">
 								<div class="row">
@@ -614,7 +574,7 @@ $mensaje = '';
 									<div class="col-6">
 										<button type="button" class="btn btn-primary btn-lg btn-block" name="añadir_participante" data-toggle="modal" data-target="#añadir_participante">Añadir participantes</button>
 									</div>
-								</div>									
+								</div>
 							</div>
 							<div class="form-group">
 								<div class="row">
@@ -622,9 +582,9 @@ $mensaje = '';
 										<h6 class="pt-2">Comentario:</h6>
 									</div>
 									<div class="col-6">
-										<input type="text" name="comentario" class="form-control"  placeholder="Comentario">
+										<input type="text" name="comentario" class="form-control" placeholder="Comentario">
 									</div>
-								</div>									
+								</div>
 							</div>
 						</form>
 					</div>
@@ -647,25 +607,25 @@ $mensaje = '';
 						</button>
 						<h5 class="modal-title text-center text-white">Añadir participante</h5>
 					</div>
-					
+
 					<div class="modal-body">
 						<form>
 							<!--AGREGAR CONTACTOS-->
 							<ul class="nav nav-pills" style="height: 250px; overflow-y: scroll;">
-							  	<li class="nav-item">
-							    	<a class="nav-link btn-lg btn-block" href="#" >
-							    		<div class="d-flex flex-row">
-							    			<div class="p-2 bd-highlight col-10 " id="truncar-texto">
-							    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/user.png" width="18"></button> Contacto 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 
-							    			</div>
-							    			<div class="p-2 bd-highlight justify-content-end col-2">
-							    				<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/40.png" width="18"></i></button>
-							    			</div>
-							    		</div>
-							    		
-							    	</a>
-							    	
-							  	</li>
+								<li class="nav-item">
+									<a class="nav-link btn-lg btn-block" href="#">
+										<div class="d-flex flex-row">
+											<div class="p-2 bd-highlight col-10 " id="truncar-texto">
+												<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/user.png" width="18"></button> Contacto 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+											</div>
+											<div class="p-2 bd-highlight justify-content-end col-2">
+												<button type="button" class="btn btn-primary btn-circle btn-sm"><img src="img/iconos/40.png" width="18"></i></button>
+											</div>
+										</div>
+
+									</a>
+
+								</li>
 							</ul>
 
 							<div class="form-group">
@@ -674,9 +634,9 @@ $mensaje = '';
 										<input class="form-control" placeholder="Introducir correo electronico">
 									</div>
 									<div class="col-2">
-										<button type="button" class="btn btn-primary btn-circle"><img src="img/iconos/40.png" width="32"></i></button>	
+										<button type="button" class="btn btn-primary btn-circle"><img src="img/iconos/40.png" width="32"></i></button>
 									</div>
-								</div>									
+								</div>
 							</div>
 						</form>
 					</div>
@@ -687,7 +647,7 @@ $mensaje = '';
 				</div>
 			</div>
 		</div>
-	</form>	
+	</form>
 	<!--FIN AÑADIR PARTICIPANTE-->
 	<!--...................................................FIN CONFIRGURACION..........................................................-->
 
@@ -698,12 +658,43 @@ $mensaje = '';
 
 	<!--.....................................................IR A PROYECTOS............................................................-->
 	<!--...................................................FIN IR A PROYECTOS..........................................................-->
-<!--...................................................FIN MENU PRINCIPAL..........................................................-->
+	<!--...................................................FIN MENU PRINCIPAL..........................................................-->
 
 
-			<!--mensaje de que funciona la variable usuario PARA DEBUGIN-->
+	<!--mensaje de que funciona la variable usuario PARA DEBUGIN-->
 
-			<!--<h1>Welcome <?php echo $usuario['nombre_completo'] ?></h1>-->
+	<!--<h1>Welcome <?php echo $usuario['nombre_completo'] ?></h1>-->
+	<?php 
+	
+	?>
+
+	<script>
+		//Funcion para evitar recargar la pagina
+
+		function enviarChat() {
+			var mensaje_chat = document.getElementById("mensaje_chat").value;
+			
+
+			var datosEnviados ='mensaje_chat=' + mensaje_chat+'&idproyecto='+<?php echo $id ?>+'&id_usuario='+<?php echo $id_usuario ?> ;
+
+			$.ajax({
+				type: 'POST',
+				url: '../Modelo/mostrarMensajesChat.inc.php',
+				data: datosEnviados,
+				success: function(resp) {
+					$("#respa").html(resp)
+				}
+			});
+			return false;
+
+		}
+		
+	</script>
+
+
+	<?php  ?>
+
+
 
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>

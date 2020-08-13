@@ -178,20 +178,27 @@ $mensaje = '';
 				<h4 class="d-flex justify-content-center">Informacion</h4>
 
 				<p class="etiquetainfo" style="margin-top: 20px">Fecha de inicio</p>
-				<p class="infoetiqueta">2020/07/17</p>
+				<p class="infoetiqueta"><?php echo $name['fecha_inicio'] ?></p>
 
 				<p class="etiquetainfo">Fecha de entrega</p>
-				<p class="infoetiqueta">2020/08/12</p>
+				<p class="infoetiqueta"><?php echo $name['fecha_final'] ?></p>
 
 				<p class="etiquetainfo">Tiempo restante</p>
-				<p class="infoetiqueta">4 dias</p>
+				<p class="infoetiqueta">
+					<?php $fecha_inicio = new DateTime($name['fecha_inicio']) ;
+						  $fecha_final = new DateTime($name['fecha_final']);
+						  $diff = $fecha_inicio->diff($fecha_final);
+						  echo $diff->days." dias";
+					?>
+					
+				</p>
 
 				<p class="etiquetainfo">Porcentaje completado</p>
-				<p class="infoetiqueta">60%</p>
+				<p class="infoetiqueta"><?php echo $name['terminado'] ?>%</p>
 
 				<p class="etiquetainfo">Descripcion</p>
 				<div class="infoetiqueta">
-					<p class="text-break">Haciendo milagos aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas</p>
+					<p class="text-break"><?php echo $name['descripcion'] ?></p>
 				</div>
 			</div>
 			<!--...............................................FIN INFORMACION....................................................-->

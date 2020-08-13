@@ -7,9 +7,6 @@ $usuario = $_POST['id_usuario'];
 if(isset($_POST['mensaje_chat'])){
 
     $mensaje = $_POST['mensaje_chat'];
-    echo $mensaje;
-    echo $id;
-    echo $usuario;
     $sql = 'INSERT INTO chat (mensaje,id_usuario,id_proyecto) VALUES (:mensaje,:id_usuario,:id_proyecto)';
     $consulta = $conexion->prepare($sql);
     $consulta->bindParam(':mensaje', $mensaje, PDO::PARAM_STR);

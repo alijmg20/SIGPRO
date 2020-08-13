@@ -1,7 +1,7 @@
 <?php
     include_once '../Controlador/conexion.inc.php';
 
-    if(isset($boton_enviar_mensaje_cliente)){
+    if(isset($_POST['boton_enviar_mensaje_cliente'])){
         $asunto = $_POST['asuntomsj'];
         $mensaje = $_POST['msjalcliente'];
 
